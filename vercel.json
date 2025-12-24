@@ -1,5 +1,9 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/sprint3/public/$1" }
+  "redirects": [
+    {
+      "source": "/sprint3/:path*",
+      "destination": "/",
+      "permanent": true
+    }
   ]
 }
