@@ -1,9 +1,16 @@
 {
-  "builds": [
-    { "src": "public/**", "use": "@vercel/static" }
-  ],
+  "version": 2,
   "routes": [
-    { "handle": "filesystem" },
-    { "src": "/", "dest": "/index.html" }
+    {
+      "src": "/sprint3/(.*)",
+      "status": 410
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    }
   ]
 }
