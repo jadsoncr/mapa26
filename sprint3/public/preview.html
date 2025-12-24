@@ -8,20 +8,21 @@
 </head>
 <body>
   <h2>Revelação gratuita</h2>
-  <div id="content"></div>
-  <p><button id="btnNext">Quero o mapa completo</button></p>
 
-  <script>
-    async function load(){
-      const params = new URLSearchParams(location.search); const numero = params.get('numero')||'2';
-      const resp = await fetch('/editorial/experiencia_gratuita_sprint2_2026.json');
-      const data = await resp.json();
-      const rec = data.find(r=>String(r.numero)===String(numero));
-      if(!rec) { document.getElementById('content').textContent = 'Número não encontrado'; return }
-      document.getElementById('content').innerHTML = `<p>Seu Ano Pessoal em 2026 é</p><h1 style="font-size:72px;margin:8px 0">${rec.numero}</h1><p>${rec.telas.tela1.split('\n').pop()}</p>`;
-      document.getElementById('btnNext').addEventListener('click', ()=> location.href = `/sprint3/convite.html?numero=${rec.numero}`);
-    }
-    load();
-  </script>
+  <section class="card" id="essential">
+    <div class="year" id="year">—</div>
+    <h3 class="keyword" id="keyword">—</h3>
+    <p class="impact" id="impact">—</p>
+
+    <div class="swatches" id="swatches" aria-hidden="true"></div>
+
+    <p class="share-note" style="color:#6B6B6B;font-size:13px;margin-top:10px">Muita gente salva ou compartilha essa parte.</p>
+    <div style="margin-top:12px;display:flex;gap:10px;align-items:center">
+      <button id="copyLink" class="btn">Copiar link</button>
+      <a id="toTimeline" class="btn" href="mapa.html">Ver a linha do tempo</a>
+    </div>
+  </section>
+
+  <script src="main.js" defer></script>
 </body>
 </html>

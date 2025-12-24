@@ -8,41 +8,26 @@
 </head>
 <body>
   <h2>O Mapa completo aprofunda a energia do seu ano</h2>
-  <p>e ajuda a atravessar 2026 com mais consciência.</p>
+  <p>Uma leitura editorial aprofundada focada em 2026 — clareza sobre desafios, oportunidades e direção. O passado e o futuro aparecem apenas como contexto.</p>
   <ul>
-    <li>3 bullets simbólicos</li>
-    <li>Leitura curta e prática</li>
-    <li>Formato compartilhável (PNG)</li>
+    <li>Leitura editorial aprofundada de 2026</li>
+    <li>Entendimento de desafios, oportunidades e direção</li>
+    <li>Conteúdo pensado para leitura e compartilhamento</li>
   </ul>
   <p><strong>R$ 19,90</strong></p>
 
-  <form id="payForm">
+  <form id="payForm" class="form" novalidate>
     <input type="hidden" id="numero" name="numero" />
-    <label>Email (receberá o mapa)</label>
-    <input id="email" name="email" required />
-    <label>Nome</label>
+    <label class="small">Nome</label>
     <input id="name" name="name" required />
-    <button type="submit">Acessar meu Mapa completo</button>
+    <label class="small">Email (opcional)</label>
+    <input id="email" name="email" />
+    <p class="microcopy" style="color:#6B6B6B">Pagamento seguro via Mercado Pago • acesso imediato • sem assinatura</p>
+    <div class="actions"><button id="payBtn" type="submit" class="btn btn-primary">Acessar leitura completa</button></div>
+    <div id="payMessage" style="margin-top:10px;color:#6B6B6B;font-size:13px"></div>
   </form>
 
-  <script>
-    // read numero from query
-    const params = new URLSearchParams(location.search); const numero = params.get('numero')||'2';
-    document.getElementById('numero').value = numero;
-
-    document.getElementById('payForm').addEventListener('submit', async e=>{
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-      const name = document.getElementById('name').value;
-      const resp = await fetch('/sprint3/create_preference', {
-        method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ numero, buyerEmail: email, buyerName: name })
-      });
-      const data = await resp.json();
-      if(data.init_point){ window.location.href = data.init_point; }
-      else alert('Erro ao criar pagamento');
-    });
-  </script>
+  <script src="main.js" defer></script>
 
 </body>
 </html>
