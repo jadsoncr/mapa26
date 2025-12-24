@@ -9,31 +9,33 @@
 </head>
 <body>
   <div class="wrap">
-    <main class="container" role="main" aria-labelledby="micro-title">
-      <div class="progress">Etapa 1 de 2</div>
-      <h2 id="micro-title">Um micro‑ritual rápido</h2>
-      <p class="lead">Reserve um momento — leia com calma e preencha apenas o necessário. Usamos os dados apenas localmente para gerar sua leitura.</p>
+    <main class="gamma-page" role="main" aria-labelledby="micro-title">
+      <section class="gamma-card gamma-step">
+        <div class="progress">Etapa 1 de 2</div>
+        <h2 id="micro-title">Um micro‑ritual rápido</h2>
+        <p class="lead">Reserve um momento — leia com calma e preencha apenas o necessário. Usamos os dados apenas localmente para gerar sua leitura.</p>
 
-      <form id="f" class="form" autocomplete="off" novalidate>
-        <div class="field">
-          <label class="small" for="name">Seu nome</label>
-          <input id="name" name="name" type="text" aria-label="Seu nome" placeholder="Ex.: Ana" required />
-          <div id="err-name" class="error" style="display:none">Por favor, informe seu nome.</div>
-        </div>
+        <form id="f" class="form" autocomplete="off" novalidate>
+          <div class="field">
+            <label class="small" for="name">Seu nome</label>
+            <input id="name" name="name" type="text" aria-label="Seu nome" placeholder="Ex.: Ana" required />
+            <div id="err-name" class="error" style="display:none">Por favor, informe seu nome.</div>
+          </div>
 
-        <div class="field">
-          <label class="small" for="dob">Data de nascimento</label>
-          <input id="dob" name="dob" type="date" aria-label="Data de nascimento" required />
-          <div id="err-dob" class="error" style="display:none">Informe uma data válida.</div>
-        </div>
+          <div class="field">
+            <label class="small" for="dob">Data de nascimento</label>
+            <input id="dob" name="dob" type="date" aria-label="Data de nascimento" required />
+            <div id="err-dob" class="error" style="display:none">Informe uma data válida.</div>
+          </div>
 
-        <p class="note" style="color:#6B6B6B">Guardamos apenas localmente no seu navegador para que o mapa seja gerado.</p>
+          <p class="gamma-note note" style="color:#6B6B6B">Guardamos apenas localmente no seu navegador para que o mapa seja gerado.</p>
 
-        <div class="actions">
-          <button id="btnContinue" class="btn" type="submit">Continuar</button>
-        </div>
-        <p class="microcopy">Só usamos os dados para gerar a leitura — nada será compartilhado.</p>
-      </form>
+          <div class="actions">
+            <button id="btnContinue" class="gamma-cta btn" type="submit">Continuar</button>
+          </div>
+          <p class="microcopy">Só usamos os dados para gerar a leitura — nada será compartilhado.</p>
+        </form>
+      </section>
     </main>
   </div>
 

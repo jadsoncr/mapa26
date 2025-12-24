@@ -1,25 +1,26 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
+  <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mapa 2026 — Preview</title>
-  <style>body{font-family:Inter,system-ui;padding:24px;max-width:720px;margin:0 auto}button{padding:10px 14px;border-radius:8px}</style>
-</head>
+  <link rel="stylesheet" href="/layout/mapa2026.css">
+  </head>
 <body>
-  <h2>Revelação gratuita</h2>
-
-  <section class="card" id="essential">
-    <div class="year" id="year">—</div>
-    <h3 class="keyword" id="keyword">—</h3>
+  <main class="gamma-page">
+    <section class="gamma-card" id="essential">
+      <h2>Revelação gratuita</h2>
+    <div class="gamma-year year" id="year">—</div>
+    <h3 class="gamma-keyword keyword" id="keyword">—</h3>
     <p class="impact" id="impact">—</p>
 
     <div class="swatches" id="swatches" aria-hidden="true"></div>
 
-    <p class="share-note" style="color:#6B6B6B;font-size:13px;margin-top:10px">Muita gente salva ou compartilha essa parte.</p>
-    <div style="margin-top:12px;display:flex;gap:10px;align-items:center">
-      <button id="copyLink" class="btn">Copiar link</button>
-      <a id="toTimeline" class="btn" href="mapa.html">Ver a linha do tempo</a>
+    <p class="gamma-note share-note">Muita gente salva ou compartilha essa parte.</p>
+
+    <div class="cta-row">
+      <button id="copyLink" class="gamma-cta btn">Copiar link</button>
+      <a id="toTimeline" class="gamma-cta btn" href="mapa.html">Ver a linha do tempo</a>
     </div>
   </section>
 
