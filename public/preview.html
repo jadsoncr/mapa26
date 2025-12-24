@@ -4,24 +4,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mapa 2026 — Preview</title>
+<<<<<<< HEAD
 
+=======
+  <link rel="stylesheet" href="mapa2026.css">
+  <link rel="stylesheet" href="fonts.css">
+>>>>>>> 04fd26b (feat(ui): editorial polish + mobile-first consistency)
   </head>
 <body>
   <main class="gamma-page">
-    <section class="gamma-card" id="essential">
+    <section class="gamma-card spacious" id="essential" aria-live="polite">
       <h2>Revelação gratuita</h2>
-    <div class="gamma-year year" id="year">—</div>
-    <h3 class="gamma-keyword keyword" id="keyword">—</h3>
-    <p class="impact" id="impact">—</p>
+      <p class="subtitle">Uma prévia breve antes da leitura completa.</p>
+      <div class="gamma-year year" id="year">—</div>
+      <h3 class="gamma-keyword keyword" id="keyword">—</h3>
+      <p class="impact" id="impact">—</p>
 
-    <div class="swatches" id="swatches" aria-hidden="true"></div>
+      <div class="swatches" id="swatches" aria-hidden="true"></div>
 
-    <p class="gamma-note share-note">Muita gente salva ou compartilha essa parte.</p>
+      <p class="gamma-note share-note">Muita gente salva ou compartilha essa parte.</p>
 
-    <div class="cta-row">
-      <button id="copyLink" class="gamma-cta btn">Copiar link</button>
-      <a id="toTimeline" class="gamma-cta btn" href="mapa.html">Ver a linha do tempo</a>
-    </div>
+      <div class="cta-row">
+        <a id="toTimeline" class="gamma-cta btn" href="mapa.html">Ver a linha do tempo</a>
+        <button id="copyLink" class="btn btn-secondary">Copiar link</button>
+      </div>
+
+      <p class="microcopy">Leitura gerada no seu navegador — sem envio de dados.</p>
   </section>
 
   <script src="main.js" defer></script>
