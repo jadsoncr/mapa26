@@ -1,0 +1,85 @@
+{
+  "images": [
+    {
+      "file": "ano-1.png",
+      "width": 1440,
+      "height": 2560,
+      "size_kb": 128.5,
+      "mean_luminance": 16.6,
+      "std_luminance": 16.4,
+      "thumb": "exports\\thumbs\\ano-1.png"
+    },
+    {
+      "file": "ano-2.png",
+      "width": 1440,
+      "height": 2560,
+      "size_kb": 133.7,
+      "mean_luminance": 16.9,
+      "std_luminance": 18.3,
+      "thumb": "exports\\thumbs\\ano-2.png"
+    },
+    {
+      "file": "ano-3.png",
+      "width": 1440,
+      "height": 2560,
+      "size_kb": 134.2,
+      "mean_luminance": 16.9,
+      "std_luminance": 18.8,
+      "thumb": "exports\\thumbs\\ano-3.png"
+    },
+    {
+      "file": "ano-4.png",
+      "width": 1440,
+      "height": 2560,
+      "size_kb": 131.3,
+      "mean_luminance": 16.4,
+      "std_luminance": 15.1,
+      "thumb": "exports\\thumbs\\ano-4.png"
+    },
+    {
+      "file": "ano-5.png",
+      "width": 1440,
+      "height": 2560,
+      "size_kb": 133.3,
+      "mean_luminance": 16.8,
+      "std_luminance": 17.9,
+      "thumb": "exports\\thumbs\\ano-5.png"
+    },
+    {
+      "file": "ano-6.png",
+      "width": 1440,
+      "height": 2560,
+      "size_kb": 144.9,
+      "mean_luminance": 17.0,
+      "std_luminance": 19.0,
+      "thumb": "exports\\thumbs\\ano-6.png"
+    },
+    {
+      "file": "ano-7.png",
+      "width": 1440,
+      "height": 2560,
+      "size_kb": 138.4,
+      "mean_luminance": 16.4,
+      "std_luminance": 15.1,
+      "thumb": "exports\\thumbs\\ano-7.png"
+    },
+    {
+      "file": "ano-8.png",
+      "width": 1440,
+      "height": 2560,
+      "size_kb": 137.4,
+      "mean_luminance": 16.4,
+      "std_luminance": 16.4,
+      "thumb": "exports\\thumbs\\ano-8.png"
+    },
+    {
+      "file": "ano-9.png",
+      "width": 1440,
+      "height": 2560,
+      "size_kb": 136.0,
+      "mean_luminance": 16.8,
+      "std_luminance": 19.0,
+      "thumb": "exports\\thumbs\\ano-9.png"
+    }
+  ]
+}

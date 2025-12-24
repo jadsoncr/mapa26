@@ -1,0 +1,21 @@
+{
+  "name": "mapa2026-export",
+  "version": "1.0.0",
+  "description": "Tools to generate Story PNGs for Mapa2026",
+  "main": "generate_stories.js",
+  "scripts": {
+    "generate": "node generate_stories.js",
+    "start-sprint3": "node sprint3/server.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^20.8.0",
+    "express": "^4.18.2",
+    "mercadopago": "^2.5.4",
+    "nodemailer": "^6.9.4",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
+    "serve-static": "^1.15.0"
+  }
+}

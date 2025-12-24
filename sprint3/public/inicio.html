@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mapa 2026 — Início</title>
+  <style>body{font-family:Inter,system-ui;padding:24px;max-width:720px;margin:0 auto}label,input{display:block;margin:8px 0}button{padding:10px 14px;border-radius:8px}</style>
+</head>
+<body>
+  <h2>Seu micro-ritual</h2>
+  <p>Usamos apenas para calcular a energia do seu ano.</p>
+  <form id="f">
+    <label>Data de nascimento (DD/MM/AAAA)</label>
+    <input id="dob" placeholder="dd/mm/aaaa" required />
+    <button type="submit">Continuar</button>
+  </form>
+
+  <script>
+    function digitalRoot(n){ while(n>9){ n = String(n).split('').reduce((s,c)=>s+Number(c),0); } return n; }
+    function calcNumero(dob){
+      const [d,m,y] = dob.split('/').map(Number);
+      if(!d||!m||!y) return null;
+      const total = d + m + 2026; // simple rule for this project
+      return digitalRoot(total);
+    }
+    document.getElementById('f').addEventListener('submit', e=>{
+      e.preventDefault();
+      const v = document.getElementById('dob').value.trim();
+      const n = calcNumero(v);
+      if(!n){ alert('Data inválida'); return }
+      location.href = `/sprint3/preview.html?numero=${n}`;
+    });
+  </script>
+</body>
+</html>

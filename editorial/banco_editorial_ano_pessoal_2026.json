@@ -1,0 +1,119 @@
+[
+  {
+    "numero": 1,
+    "tema": "Início",
+    "descricao_curta": "Ano de recomeços: um convite gentil para agir com propósito.",
+    "palavras_chave": ["iniciativa", "coragem", "foco"],
+    "cores": ["Vermelho", "Laranja"],
+    "hex": ["#E63946", "#F4A261"],
+    "frases_impacto": [
+      "Sinta a coragem para começar.",
+      "Um pequeno passo já cria movimento.",
+      "Escolha uma ação simples hoje."
+    ]
+  },
+  {
+    "numero": 2,
+    "tema": "Conciliação",
+    "descricao_curta": "Ano de conexão: atenção gentil ao que une você aos outros.",
+    "palavras_chave": ["relações", "diplomacia", "escuta"],
+    "cores": ["Laranja", "Rosa"],
+    "hex": ["#F4A261", "#E9A0B8"],
+    "frases_impacto": [
+      "Ouça antes de responder.",
+      "Pequenos gestos ampliam laços.",
+      "Aproxime-se com curiosidade."
+    ]
+  },
+  {
+    "numero": 3,
+    "tema": "Expressão",
+    "descricao_curta": "Ano de expressão: permita que suas ideias encontrem forma.",
+    "palavras_chave": ["criatividade", "alegria", "comunicação"],
+    "cores": ["Amarelo", "Lilás"],
+    "hex": ["#F4D35E", "#C299F2"],
+    "frases_impacto": [
+      "Compartilhe uma ideia hoje.",
+      "A criatividade pede um gesto simples.",
+      "Mostre o que você sente com leveza."
+    ]
+  },
+  {
+    "numero": 4,
+    "tema": "Estrutura",
+    "descricao_curta": "Ano de estrutura: construa com passos claros e constantes.",
+    "palavras_chave": ["organização", "fundação", "rotina"],
+    "cores": ["Marrom", "Verde escuro"],
+    "hex": ["#8B5E3C", "#2F6B3A"],
+    "frases_impacto": [
+      "Um hábito por vez cria fundamento.",
+      "Pequenas rotinas sustentam grandes escolhas.",
+      "Escolha o próximo passo com calma."
+    ]
+  },
+  {
+    "numero": 5,
+    "tema": "Mudança",
+    "descricao_curta": "Ano de mudança: explore com curiosidade e confiança.",
+    "palavras_chave": ["mobilidade", "curiosidade", "flexibilidade"],
+    "cores": ["Turquesa", "Laranja"],
+    "hex": ["#2EC4B6", "#F4A261"],
+    "frases_impacto": [
+      "Permita-se experimentar algo novo.",
+      "Movimente-se com curiosidade prática.",
+      "A mudança começa com uma escolha."
+    ]
+  },
+  {
+    "numero": 6,
+    "tema": "Cuidado",
+    "descricao_curta": "Ano de cuidado: pratique presença e apoio com intenção.",
+    "palavras_chave": ["cuidado", "serviço", "equilíbrio"],
+    "cores": ["Rosa", "Verde"],
+    "hex": ["#F8BBD0", "#6ABF69"],
+    "frases_impacto": [
+      "Um gesto de cuidado transforma rotinas.",
+      "Atenção prática nutre relações.",
+      "Ofereça suporte com generosidade."
+    ]
+  },
+  {
+    "numero": 7,
+    "tema": "Profundidade",
+    "descricao_curta": "Ano de profundidade: espaço para aprender e acalmar a mente.",
+    "palavras_chave": ["introspecção", "conhecimento", "silêncio"],
+    "cores": ["Roxo", "Azul profundo"],
+    "hex": ["#6A4C93", "#244273"],
+    "frases_impacto": [
+      "Reserve tempo para ouvir sua intuição.",
+      "Aprofunde-se com passos pacientes.",
+      "Saiba que reflexão gera clareza."
+    ]
+  },
+  {
+    "numero": 8,
+    "tema": "Poder pessoal",
+    "descricao_curta": "Ano de poder pessoal: assuma decisões com confiança e clareza.",
+    "palavras_chave": ["autoridade", "responsabilidade", "meta"],
+    "cores": ["Preto", "Dourado"],
+    "hex": ["#000000", "#D4AF37"],
+    "frases_impacto": [
+      "Decida com foco no que importa.",
+      "Recursos alinhados geram resultados.",
+      "Aja com responsabilidade e confiança."
+    ]
+  },
+  {
+    "numero": 9,
+    "tema": "Encerramento",
+    "descricao_curta": "Ano de encerramento: celebre o que foi e abra espaço para o novo.",
+    "palavras_chave": ["conclusão", "síntese", "liberação"],
+    "cores": ["Branco", "Violeta"],
+    "hex": ["#FFFFFF", "#7D3C98"],
+    "frases_impacto": [
+      "Reconheça o que chegou ao fim com carinho.",
+      "Transforme aprendizados em liberdade.",
+      "Prepare-se gentilmente para recomeçar."
+    ]
+  }
+]

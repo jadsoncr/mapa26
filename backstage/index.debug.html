@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <style>
+            /* Local fonts (if present in workspace/layout/fonts) */
+            @font-face{font-family:'Cormorant Garamond';src:url('layout/fonts/CormorantGaramond-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+            @font-face{font-family:'Cormorant Garamond';src:url('layout/fonts/CormorantGaramond-SemiBold.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+            @font-face{font-family:'Inter';src:url('layout/fonts/Inter-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+                <link rel="stylesheet" href="layout/fonts.css">
+                body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;max-width:1100px;margin:32px auto;padding:0 16px;color:#0f1720}
+        #previewContainer{display:flex;flex-direction:column;gap:18px;padding:8px}
+        #rawPanel{margin-top:18px}
+
+        /* Card base */
+        .card{background:#0f1720;color:#fff;border-radius:14px;padding:16px;box-shadow:0 6px 18px rgba(2,6,23,0.45);box-sizing:border-box}
+        .cardInner{height:100%;display:flex;flex-direction:column}
+        .cardBar{display:flex;gap:8px;justify-content:flex-end}
+        .cardBar button{background:#111;color:#fff;border:0;padding:10px 12px;border-radius:10px;min-height:40px}
+        .cardContent{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:8px}
+
+        /* Typographic scale */
+        .card h1.t1{font-size:30px;line-height:1.04;margin:6px 0}
+        .card p.t3{font-size:18px;margin:6px 0}
+        .card .t2 p{margin:8px 0;font-size:16px}
+
+        /* Dots / colors */
+        .dots{display:flex;gap:12px;align-items:center}
+        .dotItem{display:flex;gap:8px;align-items:center}
+        .dot{width:36px;height:36px;border-radius:50%;display:inline-block}
+        .dotLabel{font-size:16px}
+
+        /* Timeline: equal heights */
+        .timeline{display:flex;gap:10px;width:100%;align-items:stretch}
+        .tlBlock{flex:1;background:rgba(255,255,255,0.04);padding:12px;border-radius:10px;display:flex;flex-direction:column;justify-content:center;min-height:110px}
+        .tlBlock strong{display:block;margin-bottom:6px}
+
+        /* CTA */
+        .ctaCard .cardContent{align-items:center;text-align:center}
+        .ctaCard #btnMap{background:#D4AF37;color:#071019;border:0;padding:14px 18px;border-radius:12px;font-weight:700;min-width:200px}
+
+        /* Selected card visual */
+        .card.selected{outline:3px solid rgba(212,175,55,0.12);transform:translateY(-6px);transition:transform .18s ease}
+
+        /* raw panel styles */
+        #rawPanel pre{background:#f6f8fa;color:#0f1720;padding:12px;border-radius:10px;max-height:70vh;overflow:auto}
+
+        /* Responsive layout */
+        @media(min-width:900px){
+            .layoutRow{display:flex;gap:28px;align-items:flex-start;max-width:1100px;margin:0 auto}
+            #previewContainer{flex:0 0 420px}
+            #rawPanel{flex:1}
+        }
+
+        @media(max-width:420px){
+            body{padding:12px}
+            .card h1.t1{font-size:22px}
+            .dot{width:28px;height:28px}
+            .ctaCard #btnMap{width:100%}
+        }
+        </style>
+    </head>
+    <body>
+        <p style="margin:6px 0 12px 0;color:#334155">Resumo do ciclo — preview rápido para Stories</p>
+
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
+        <label for="selNum">Escolha Ano Pessoal:</label>
+        <select id="selNum">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+        </select>
+        <button id="btnGen">Gerar preview</button>
+        <button id="btnLoadRaw">Carregar JSON (debug)</button>
+    </div>
+
+    <div id="globalActions" style="display:flex;gap:10px;justify-content:flex-end;max-width:420px;margin:8px auto 12px;">
+        <button id="actCopy">Copiar selecionado</button>
+        <button id="actShare">Compartilhar selecionado</button>
+        <button id="actSave">Salvar imagem (selecionado)</button>
+    </div>
+
+    <div class="layoutRow">
+        <div id="previewContainer" style="max-width:420px;margin:0"></div>
+        <div id="rawPanel">
+            <h2 style="margin-top:0">Debug JSON (raw)</h2>
+            <pre id="out" style="max-width:100%">Clique em "Carregar JSON (debug)" para ver os arquivos brutos.</pre>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <!-- Embedded editorial JSON to allow running the preview from file:// without a server -->
+    <script id="__banco_data" type="application/json">[
+    {
+        "numero": 1,
+        "tema": "Início",
+        "descricao_curta": "Um ciclo de novos começos e iniciativa.",
+        "palavras_chave": ["iniciativa", "coragem", "foco"],
+        "cores": ["Vermelho", "Laranja"],
+        "hex": ["#E63946", "#F4A261"],
+        "frases_impacto": [
+            "Impulso de começar algo novo.",
+            "Energia para tomar a iniciativa.",
+            "Foco claro no primeiro passo."
+        ]
+    },
+    {
+        "numero": 2,
+        "tema": "Conciliação",
+        "descricao_curta": "Um ciclo de ajustes, parcerias e sensibilidade.",
+        "palavras_chave": ["relações", "diplomacia", "escuta"],
+        "cores": ["Laranja", "Rosa"],
+        "hex": ["#F4A261", "#E9A0B8"],
+        "frases_impacto": [
+            "Atenção às pequenas conexões.",
+            "Dialogar com mais abertura.",
+            "Escolhas que aproximam."
+        ]
+    },
+    {
+        "numero": 3,
+        "tema": "Expressão",
+        "descricao_curta": "Um ciclo de criatividade e comunicação.",
+        "palavras_chave": ["criatividade", "alegria", "comunicação"],
+        "cores": ["Amarelo", "Lilás"],
+        "hex": ["#F4D35E", "#C299F2"],
+        "frases_impacto": [
+            "Ideias ganham forma com leveza.",
+            "Expressar o que importa.",
+            "A criatividade encontra voz."
+        ]
+    },
+    {
+        "numero": 4,
+        "tema": "Estrutura",
+        "descricao_curta": "Um ciclo de disciplina, método e construção.",
+        "palavras_chave": ["organização", "fundação", "rotina"],
+        "cores": ["Marrom", "Verde escuro"],
+        "hex": ["#8B5E3C", "#2F6B3A"],
+        "frases_impacto": [
+            "Concretizar com passos consistentes.",
+            "Estabilidade vem com prática.",
+            "Bases sólidas ampliam opções."
+        ]
+    },
+    {
+        "numero": 5,
+        "tema": "Mudança",
+        "descricao_curta": "Um ciclo de liberdade, movimento e adaptação.",
+        "palavras_chave": ["mobilidade", "curiosidade", "flexibilidade"],
+        "cores": ["Turquesa", "Laranja"],
+        "hex": ["#2EC4B6", "#F4A261"],
+        "frases_impacto": [
+            "Confiança para experimentar o novo.",
+            "Movimento que abre possibilidades.",
+            "Adaptação como recurso prático."
+        ]
+    },
+    {
+        "numero": 6,
+        "tema": "Cuidado",
+        "descricao_curta": "Um ciclo de responsabilidade afetiva e suporte.",
+        "palavras_chave": ["cuidado", "serviço", "equilíbrio"],
+        "cores": ["Rosa", "Verde"],
+        "hex": ["#F8BBD0", "#6ABF69"],
+        "frases_impacto": [
+            "Atenção prática às relações próximas.",
+            "Senso de responsabilidade equilibrada.",
+            "Gestos que sustentam o dia a dia."
+        ]
+    },
+    {
+        "numero": 7,
+        "tema": "Profundidade",
+        "descricao_curta": "Um ciclo de reflexão, estudo e recolhimento.",
+        "palavras_chave": ["introspecção", "conhecimento", "silêncio"],
+        "cores": ["Roxo", "Azul profundo"],
+        "hex": ["#6A4C93", "#244273"],
+        "frases_impacto": [
+            "Momento para aprofundar entendimentos.",
+            "Valorizar o tempo de estudo.",
+            "Clareza nasce do silêncio atento."
+        ]
+    },
+    {
+        "numero": 8,
+        "tema": "Poder pessoal",
+        "descricao_curta": "Um ciclo de autonomia, gestão e resultados.",
+        "palavras_chave": ["autoridade", "responsabilidade", "meta"],
+        "cores": ["Preto", "Dourado"],
+        "hex": ["#000000", "#D4AF37"],
+        "frases_impacto": [
+            "Tomar decisões com clareza de propósito.",
+            "Guiar recursos com responsabilidade.",
+            "Ação alinhada à sua direção."
+        ]
+    },
+    {
+        "numero": 9,
+        "tema": "Encerramento",
+        "descricao_curta": "Um ciclo de conclusão, síntese e liberação.",
+        "palavras_chave": ["conclusão", "síntese", "liberação"],
+        "cores": ["Branco", "Violeta"],
+        "hex": ["#FFFFFF", "#7D3C98"],
+        "frases_impacto": [
+            "Reconhecer o que chegou ao fim.",
+            "Síntese do que foi aprendido.",
+            "Espaço para novos ciclos."
+        ]
+    }
+]</script>
+    <script id="__exp_data" type="application/json">[
+    {
+        "numero": 1,
+        "tema": "Início",
+        "telas": {
+            "tela1": "Seu Ano Pessoal em 2026 é: 1\nInício\nImpulso de começar algo novo.",
+            "tela2": [
+                "Impulso e coragem no presente.",
+                "Vontade de agir de forma direta.",
+                "Foco claro em um primeiro passo."
+            ],
+            "tela3": "Começo com foco."
+        },
+        "linha_do_tempo": {
+            "2025": "2025 — 9 • Encerramento. Fechou ciclos que abriram espaço para reorganizar prioridades.",
+            "2026": "2026 — 1 • Início. Um ano de energia para dar passos concretos e começar projetos.",
+            "2027": "2027 — 2 • Conciliação. Curioso para ver como parcerias podem moldar os próximos passos. (Conteúdo completo bloqueado)"
+        },
+        "cores": {
+            "texto": "Suas cores em 2026\n\n🟠 Vermelho\n🟠 Laranja\n\nEnergia para viver este ciclo com mais consciência.",
+            "cores_nomes": ["Vermelho","Laranja"],
+            "hex": ["#E63946","#F4A261"]
+        }
+    },
+    {
+        "numero": 2,
+        "tema": "Conciliação",
+        "telas": {
+            "tela1": "Seu Ano Pessoal em 2026 é: 2\nConciliação\nAtenção às pequenas conexões.",
+            "tela2": [
+                "Sensibilidade nas relações do dia a dia.",
+                "Desejo de ajustar acordos e escutar mais.",
+                "Priorizar harmonia nas interações."
+            ],
+            "tela3": "Escolhas que aproximam."
+        },
+        "linha_do_tempo": {
+            "2025": "2025 — 1 • Início. Passos iniciais que pediram coragem e definiram intenções.",
+            "2026": "2026 — 2 • Conciliação. Um ano de ajuste fino nas relações e parcerias.",
+            "2027": "2027 — 3 • Expressão. Uma fase de comunicação ampliada e mais visibilidade. (Conteúdo completo bloqueado)"
+        },
+        "cores": {
+            "texto": "Suas cores em 2026\n\n🟠 Laranja\n🌸 Rosa\n\nEnergia para viver este ciclo com mais consciência.",
+            "cores_nomes": ["Laranja","Rosa"],
+            "hex": ["#F4A261","#E9A0B8"]
+        }
+    },
+    {
+        "numero": 3,
+        "tema": "Expressão",
+        "telas": {
+            "tela1": "Seu Ano Pessoal em 2026 é: 3\nExpressão\nIdeias ganham forma com leveza.",
+            "tela2": [
+                "Alegria ao compartilhar opiniões.",
+                "Criatividade fluindo em projetos pequenos.",
+                "Mais vontade de se mostrar e comunicar."
+            ],
+            "tela3": "A criatividade encontra voz."
+        },
+        "linha_do_tempo": {
+            "2025": "2025 — 2 • Conciliação. Ajustes relacionais que facilitaram maior expressão.",
+            "2026": "2026 — 3 • Expressão. Uma temporada de ideias e comunicação com mais leveza.",
+            "2027": "2027 — 4 • Estrutura. Temas de método e organização ganham força. (Conteúdo completo bloqueado)"
+        },
+        "cores": {
+            "texto": "Suas cores em 2026\n\n🟡 Amarelo\n💜 Lilás\n\nEnergia para viver este ciclo com mais consciência.",
+            "cores_nomes": ["Amarelo","Lilás"],
+            "hex": ["#F4D35E","#C299F2"]
+        }
+    },
+    {
+        "numero": 4,
+        "tema": "Estrutura",
+        "telas": {
+            "tela1": "Seu Ano Pessoal em 2026 é: 4\nEstrutura\nConcretizar com passos consistentes.",
+            "tela2": [
+                "Rotina e método ganham importância.",
+                "Energia para criar bases estáveis.",
+                "Foco em execução e sustentação."
+            ],
+            "tela3": "Bases sólidas ampliam opções."
+        },
+        "linha_do_tempo": {
+            "2025": "2025 — 3 • Expressão. Período de ideias e exposição que pediu organização posterior.",
+            "2026": "2026 — 4 • Estrutura. Atenção a processo, rotina e construção de alicerces.",
+            "2027": "2027 — 5 • Mudança. Um ano com mais movimento e oportunidades. (Conteúdo completo bloqueado)"
+        },
+        "cores": {
+            "texto": "Suas cores em 2026\n\n🟤 Marrom\n🌲 Verde escuro\n\nEnergia para viver este ciclo com mais consciência.",
+            "cores_nomes": ["Marrom","Verde escuro"],
+            "hex": ["#8B5E3C","#2F6B3A"]
+        }
+    },
+    {
+        "numero": 5,
+        "tema": "Mudança",
+        "telas": {
+            "tela1": "Seu Ano Pessoal em 2026 é: 5\nMudança\nConfiança para experimentar o novo.",
+            "tela2": [
+                "Desejo de liberdade e novidade.",
+                "Curiosidade por caminhos diferentes.",
+                "Movimento que expande experiências."
+            ],
+            "tela3": "Movimento que abre possibilidades."
+        },
+        "linha_do_tempo": {
+            "2025": "2025 — 4 • Estrutura. Período de organização que permitiu mais mobilidade.",
+            "2026": "2026 — 5 • Mudança. Um ano com mais movimento e exploração prática.",
+            "2027": "2027 — 6 • Cuidado. Foco maior em relações próximas e suporte mútuo. (Conteúdo completo bloqueado)"
+        },
+        "cores": {
+            "texto": "Suas cores em 2026\n\n🔷 Turquesa\n🟠 Laranja\n\nEnergia para viver este ciclo com mais consciência.",
+            "cores_nomes": ["Turquesa","Laranja"],
+            "hex": ["#2EC4B6","#F4A261"]
+        }
+    },
+    {
+        "numero": 6,
+        "tema": "Cuidado",
+        "telas": {
+            "tela1": "Seu Ano Pessoal em 2026 é: 6\nCuidado\nAtenção prática às relações próximas.",
+            "tela2": [
+                "Responsabilidade nas relações do dia a dia.",
+                "Mais presença para cuidar e sustentar.",
+                "Atenção a detalhes que mantêm equilíbrio."
+            ],
+            "tela3": "Gestos que sustentam o dia a dia."
+        },
+        "linha_do_tempo": {
+            "2025": "2025 — 5 • Mudança. Experiências que aumentaram atenção às necessidades alheias.",
+            "2026": "2026 — 6 • Cuidado. Um ano para organizar suporte e responsabilidades afetivas.",
+            "2027": "2027 — 7 • Profundidade. Mais espaço para estudo e interiorização. (Conteúdo completo bloqueado)"
+        },
+        "cores": {
+            "texto": "Suas cores em 2026\n\n🌸 Rosa\n🌿 Verde\n\nEnergia para viver este ciclo com mais consciência.",
+            "cores_nomes": ["Rosa","Verde"],
+            "hex": ["#F8BBD0","#6ABF69"]
+        }
+    },
+    {
+        "numero": 7,
+        "tema": "Profundidade",
+        "telas": {
+            "tela1": "Seu Ano Pessoal em 2026 é: 7\nProfundidade\nMomento para aprofundar entendimentos.",
+            "tela2": [
+                "Tempo para estudo e silêncio reflexivo.",
+                "Valorização do recolhimento e análise.",
+                "Busca por clareza interna na rotina."
+            ],
+            "tela3": "Clareza nasce do silêncio atento."
+        },
+        "linha_do_tempo": {
+            "2025": "2025 — 6 • Cuidado. Período de responsabilidades que trouxe reflexão.",
+            "2026": "2026 — 7 • Profundidade. Um ano para consolidar entendimento e pesquisa pessoal.",
+            "2027": "2027 — 8 • Poder pessoal. Mais ação prática e gestão de resultados. (Conteúdo completo bloqueado)"
+        },
+        "cores": {
+            "texto": "Suas cores em 2026\n\n🟣 Roxo\n🔵 Azul profundo\n\nEnergia para viver este ciclo com mais consciência.",
+            "cores_nomes": ["Roxo","Azul profundo"],
+            "hex": ["#6A4C93","#244273"]
+        }
+    },
+    {
+        "numero": 8,
+        "tema": "Poder pessoal",
+        "telas": {
+            "tela1": "Seu Ano Pessoal em 2026 é: 8\nPoder pessoal\nTomar decisões com clareza de propósito.",
+            "tela2": [
+                "Sensação de assumir responsabilidade maior.",
+                "Foco em metas e recursos concretos.",
+                "Centralidade na gestão do próprio caminho."
+            ],
+            "tela3": "Ação alinhada à sua direção."
+        },
+        "linha_do_tempo": {
+            "2025": "2025 — 7 • Profundidade. Trabalho interno que preparou mais presença prática.",
+            "2026": "2026 — 8 • Poder pessoal. Ano de assumir gestão e responsabilidade por resultados.",
+            "2027": "2027 — 9 • Encerramento. Síntese de um ciclo antes de novos recomeços. (Conteúdo completo bloqueado)"
+        },
+        "cores": {
+            "texto": "Suas cores em 2026\n\n⬛ Preto\n✨ Dourado\n\nEnergia para viver este ciclo com mais consciência.",
+            "cores_nomes": ["Preto","Dourado"],
+            "hex": ["#000000","#D4AF37"]
+        }
+    },
+    {
+        "numero": 9,
+        "tema": "Encerramento",
+        "telas": {
+            "tela1": "Seu Ano Pessoal em 2026 é: 9\nEncerramento\nReconhecer o que chegou ao fim.",
+            "tela2": [
+                "Sensação de fechamento de ciclos.",
+                "Síntese do que foi aprendido recentemente.",
+                "Espaço interno para reorganizar intenções."
+            ],
+            "tela3": "Espaço para novos ciclos."
+        },
+        "linha_do_tempo": {
+            "2025": "2025 — 8 • Poder pessoal. Gestão e resultados que antecederam fechamento de temas.",
+            "2026": "2026 — 9 • Encerramento. Um ano para concluir e sintetizar aprendizados.",
+            "2027": "2027 — 1 • Início. Sinais de recomeço com nova energia. (Conteúdo completo bloqueado)"
+        },
+        "cores": {
+            "texto": "Suas cores em 2026\n\n⚪ Branco\n🟣 Violeta\n\nEnergia para viver este ciclo com mais consciência.",
+            "cores_nomes": ["Branco","Violeta"],
+            "hex": ["#FFFFFF","#7D3C98"]
+        }
+    }
+]</script>
+    <script>
+        const PATH_BANCO = 'editorial/banco_editorial_ano_pessoal_2026.json';
+        const PATH_EXP = 'editorial/experiencia_gratuita_sprint2_2026.json';
+        let banco=null, exper=null;
+
+        async function fetchJson(path){
+            // if embedded JSON exists (for file:// usage), prefer that
+            try{
+                if(path.includes('banco')){
+                    const el = document.getElementById('__banco_data');
+                    if(el) return JSON.parse(el.textContent);
+                }
+                if(path.includes('experiencia') || path.includes('experienc')){
+                    const el = document.getElementById('__exp_data');
+                    if(el) return JSON.parse(el.textContent);
+                }
+            }catch(e){ /* ignore and fallback to fetch */ }
+            const res = await fetch(path);
+            if(!res.ok) throw new Error(res.status+': '+res.statusText);
+            return res.json();
+        }
+
+        function cleanText(s){
+            if(!s) return '';
+            return String(s).replace(/\(Conteúdo.*\)/g,'').trim();
+        }
+
+        function nlToParagraphs(s){
+            if(!s) return null;
+            return String(s).split(/\n+/).map(str=>str.trim()).filter(Boolean);
+        }
+
+        function createCardHtml(type, payload){
+            // returns DOM element
+            const card = document.createElement('div');
+            card.className = 'card';
+            // accent color
+            const accent = (payload.hex && payload.hex[0]) || '#F4A261';
+            card.style.borderLeft = `8px solid ${accent}`;
+
+            const inner = document.createElement('div');
+            inner.className = 'cardInner';
+
+            const content = document.createElement('div'); content.className='cardContent';
+
+            if(type==='tela1'){
+                const parts = nlToParagraphs(cleanText(payload));
+                if(parts && parts.length){
+                    const h = document.createElement('h1'); h.className='t1'; h.textContent = parts.join(' — ');
+                    content.appendChild(h);
+                }
+            } else if(type==='tela2'){
+                const arr = payload;
+                const ul = document.createElement('div'); ul.className='t2';
+                (arr||[]).forEach(p=>{ const pEl = document.createElement('p'); pEl.textContent = cleanText(p); ul.appendChild(pEl); });
+                content.appendChild(ul);
+            } else if(type==='tela3'){
+                const p = document.createElement('p'); p.className='t3'; p.textContent = cleanText(payload); content.appendChild(p);
+            } else if(type==='cores'){
+                const title = document.createElement('h3'); title.textContent='Suas cores em 2026'; content.appendChild(title);
+                const dots = document.createElement('div'); dots.className='dots';
+                (payload.cores_nomes||[]).forEach((name,i)=>{
+                    const wrap = document.createElement('div'); wrap.className='dotItem';
+                    const dot = document.createElement('span'); dot.className='dot'; dot.style.background = (payload.hex&&payload.hex[i])||'#eee';
+                    const lab = document.createElement('div'); lab.textContent = name; lab.className='dotLabel';
+                    wrap.appendChild(dot); wrap.appendChild(lab); dots.appendChild(wrap);
+                });
+                content.appendChild(dots);
+                const txt = document.createElement('p'); txt.textContent = cleanText(payload.texto); content.appendChild(txt);
+            } else if(type==='linha'){
+                const box = document.createElement('div'); box.className='timeline';
+                ['2025','2026','2027'].forEach(y=>{
+                    const b = document.createElement('div'); b.className='tlBlock';
+                    const h = document.createElement('strong'); h.textContent = y; b.appendChild(h);
+                    const v = payload[y] ? cleanText(payload[y]) : ''; const p = document.createElement('p'); p.textContent = v; b.appendChild(p);
+                    box.appendChild(b);
+                });
+                content.appendChild(box);
+            }
+
+            inner.appendChild(content);
+            card.appendChild(inner);
+
+            // selectable
+            card.addEventListener('click', ()=>{
+                document.querySelectorAll('.card').forEach(c=>c.classList.remove('selected'));
+                card.classList.add('selected');
+            });
+
+            return card;
+        }
+
+        function copyTextFromCard(card){
+            if(!card){ showToast('Nenhum cartão selecionado'); return }
+            const txt = card.querySelector('.cardContent').innerText;
+            navigator.clipboard.writeText(txt).then(()=>showToast('Copiado'), ()=>showToast('Falha ao copiar'));
+        }
+
+        async function shareCard(card){
+            if(!card){ showToast('Nenhum cartão selecionado'); return }
+            const text = card.querySelector('.cardContent').innerText;
+            if(navigator.share){
+                try{ await navigator.share({text}); showToast('Compartilhado') }catch(e){ showToast('Compartilhar cancelado') }
+            } else {
+                try{ await navigator.clipboard.writeText(text); showToast('Compartilhamento não disponível. Texto copiado.') }catch(e){ showToast('Falha ao copiar.') }
+            }
+        }
+
+        function saveCardImage(card){
+            if(!card){ showToast('Nenhum cartão selecionado'); return }
+            html2canvas(card, {scale:2}).then(canvas=>{
+                canvas.toBlob(blob=>{
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a'); a.href = url; a.download = 'card.png'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+                    showToast('Imagem gerada');
+                }, 'image/png');
+            }).catch(e=>showToast('Falha ao gerar imagem'));
+        }
+
+        function showToast(msg){
+            let t = document.getElementById('toast');
+            if(!t){ t = document.createElement('div'); t.id='toast'; t.style.position='fixed'; t.style.bottom='18px'; t.style.left='50%'; t.style.transform='translateX(-50%)'; t.style.background='rgba(15,23,32,0.95)'; t.style.color='#fff'; t.style.padding='10px 14px'; t.style.borderRadius='10px'; t.style.zIndex=9999; document.body.appendChild(t); }
+            t.textContent = msg; t.style.opacity=1; clearTimeout(t._timeout); t._timeout = setTimeout(()=>{ t.style.opacity=0; }, 2200);
+        }
+
+        function renderForNumber(n){
+            const p = exper.find(r=>r.numero===n);
+            const preview = document.getElementById('previewContainer'); preview.innerHTML='';
+            if(!p){ preview.textContent='Número não encontrado'; return }
+
+            // order: tela1, tela2, tela3, cores, linha do tempo, CTA
+            const tela1 = createCardHtml('tela1', p.telas.tela1);
+            const tela2 = createCardHtml('tela2', p.telas.tela2);
+            const tela3 = createCardHtml('tela3', p.telas.tela3);
+            const cores = createCardHtml('cores', p.cores);
+            const linha = createCardHtml('linha', p.linha_do_tempo);
+
+            preview.appendChild(tela1);
+            preview.appendChild(tela2);
+            preview.appendChild(tela3);
+            preview.appendChild(cores);
+            preview.appendChild(linha);
+
+            // mark first card selected
+            const first = preview.querySelector('.card'); if(first){ first.classList.add('selected'); }
+
+            // CTA card
+            const cta = document.createElement('div'); cta.className='card ctaCard'; cta.style.borderLeft='8px solid transparent';
+            cta.innerHTML = `<div class="cardInner"><div class="cardContent"><h2>Quer entender por que este é o seu ciclo e como usar esse movimento a seu favor?</h2><div style="margin-top:12px"><button id="btnMap">Ver o Mapa completo</button></div></div></div>`;
+            preview.appendChild(cta);
+            cta.querySelector('#btnMap').addEventListener('click', ()=>alert('Transição suave: Ver o Mapa completo (não implementado)'));
+        }
+
+        document.getElementById('btnGen').addEventListener('click', async ()=>{
+            try{
+                if(!banco) banco = await fetchJson(PATH_BANCO);
+                if(!exper) exper = await fetchJson(PATH_EXP);
+                const n = parseInt(document.getElementById('selNum').value,10);
+                renderForNumber(n);
+            }catch(e){ alert('Erro: '+e); }
+        });
+
+        document.getElementById('btnLoadRaw').addEventListener('click', async ()=>{
+            try{
+                const d1 = await fetchJson(PATH_BANCO); const d2 = await fetchJson(PATH_EXP);
+                document.getElementById('out').textContent = JSON.stringify({banco:d1,exper:d2},null,2);
+            }catch(e){ document.getElementById('out').textContent='Erro: '+e }
+        });
+
+        // global actions
+        document.getElementById('actCopy').addEventListener('click', ()=>{ copyTextFromCard(document.querySelector('.card.selected')) });
+        document.getElementById('actShare').addEventListener('click', ()=>{ shareCard(document.querySelector('.card.selected')) });
+        document.getElementById('actSave').addEventListener('click', ()=>{ saveCardImage(document.querySelector('.card.selected')) });
+    </script>
+
+    <style>
+        /* Preview styles */
+        body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;max-width:1100px;margin:32px auto;padding:0 16px}
+        .layoutRow{display:block}
+        #previewContainer{display:flex;flex-direction:column;gap:14px;padding:8px}
+        #rawPanel{margin-top:18px}
+        .card{background:#0f1720;color:#fff;border-radius:14px;padding:12px;box-shadow:0 6px 18px rgba(2,6,23,0.45);box-sizing:border-box}
+        .cardInner{height:100%;display:flex;flex-direction:column}
+        .cardBar{display:flex;gap:8px;justify-content:flex-end}
+        .cardBar button{background:#111;color:#fff;border:0;padding:6px 8px;border-radius:8px}
+        .cardContent{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:6px}
+        .card h1.t1{font-size:28px;margin:8px 0}
+        .card p.t3{font-size:20px;margin:6px 0}
+        .card .t2 p{margin:6px 0;font-size:16px}
+        .dots{display:flex;gap:12px;align-items:center}
+        .dotItem{display:flex;gap:8px;align-items:center}
+        .dot{width:28px;height:28px;border-radius:50%;display:inline-block}
+        .dotLabel{font-size:16px}
+        .timeline{display:flex;gap:8px;width:100%}
+        .tlBlock{flex:1;background:rgba(255,255,255,0.04);padding:8px;border-radius:8px}
+        .ctaCard .cardContent{align-items:center;text-align:center}
+        .ctaCard #btnMap{background:#D4AF37;color:#071019;border:0;padding:12px 18px;border-radius:12px;font-weight:700}
+        .card.selected{outline:3px solid rgba(212,175,55,0.12);transform:translateY(-4px)}
+        /* raw panel styles */
+        #rawPanel pre{background:#f6f8fa;color:#0f1720;padding:12px;border-radius:10px;max-height:70vh;overflow:auto}
+
+        @media(min-width:900px){
+            .layoutRow{display:flex;gap:28px;align-items:flex-start;max-width:1100px;margin:0 auto}
+            #previewContainer{flex:0 0 420px}
+            #rawPanel{flex:1}
+        }
+        @media(max-width:420px){ body{padding:12px} .card h1.t1{font-size:22px} }
+    </style>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mapa 2026 — Seu Mapa</title>
+  <style>body{font-family:Inter,system-ui;padding:24px;max-width:720px;margin:0 auto}button{padding:10px 14px;border-radius:8px}</style>
+</head>
+<body>
+  <div id="root"></div>
+  <p><button id="save">Salvar meu Mapa</button></p>
+
+  <script>
+    async function load(){
+      const params = new URLSearchParams(location.search); const numero = params.get('numero')||'2';
+      const resp = await fetch('/editorial/experiencia_gratuita_sprint2_2026.json');
+      const data = await resp.json();
+      const rec = data.find(r=>String(r.numero)===String(numero));
+      if(!rec) { document.getElementById('root').textContent = 'Número não encontrado'; return }
+      // build structure similar to preview_map.html
+      const el = document.getElementById('root');
+      el.innerHTML = `<header><h1>Mapa 2026</h1></header><main><h2 style="font-size:84px">${rec.numero}</h2><p>${rec.telas.tela1.split('\n').pop()}</p><section style="margin-top:18px;padding:12px;border-radius:12px;background:#111;color:#fff">“Escolher com calma também é uma forma de coragem.”</section></main>`;
+      document.getElementById('save').addEventListener('click', ()=> alert('Salvar: use o botão do navegador ou pressione e segure a imagem no celular.'));
+    }
+    load();
+  </script>
+</body>
+</html>

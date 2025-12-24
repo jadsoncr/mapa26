@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mapa 2026 — Convite</title>
+  <style>body{font-family:Inter,system-ui;padding:24px;max-width:720px;margin:0 auto}button{padding:10px 14px;border-radius:8px}</style>
+</head>
+<body>
+  <h2>O Mapa completo aprofunda a energia do seu ano</h2>
+  <p>e ajuda a atravessar 2026 com mais consciência.</p>
+  <ul>
+    <li>3 bullets simbólicos</li>
+    <li>Leitura curta e prática</li>
+    <li>Formato compartilhável (PNG)</li>
+  </ul>
+  <p><strong>R$ 19,90</strong></p>
+
+  <form id="payForm">
+    <input type="hidden" id="numero" name="numero" />
+    <label>Email (receberá o mapa)</label>
+    <input id="email" name="email" required />
+    <label>Nome</label>
+    <input id="name" name="name" required />
+    <button type="submit">Acessar meu Mapa completo</button>
+  </form>
+
+  <script>
+    // read numero from query
+    const params = new URLSearchParams(location.search); const numero = params.get('numero')||'2';
+    document.getElementById('numero').value = numero;
+
+    document.getElementById('payForm').addEventListener('submit', async e=>{
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const name = document.getElementById('name').value;
+      const resp = await fetch('/sprint3/create_preference', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ numero, buyerEmail: email, buyerName: name })
+      });
+      const data = await resp.json();
+      if(data.init_point){ window.location.href = data.init_point; }
+      else alert('Erro ao criar pagamento');
+    });
+  </script>
+
+</body>
+</html>

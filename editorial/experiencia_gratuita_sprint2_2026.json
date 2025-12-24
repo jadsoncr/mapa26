@@ -1,0 +1,209 @@
+[
+  {
+    "numero": 1,
+    "tema": "Início",
+    "telas": {
+      "tela1": "Seu Ano Pessoal em 2026 é: 1\nInício\nUm convite suave para começar.",
+      "tela2": [
+        "Sinta a coragem de dar um passo pequeno.",
+        "Escolha uma ação prática para hoje.",
+        "Repita o gesto por 7 dias para criar ritmo."
+      ],
+      "tela3": "Comece com um passo simples agora."
+    },
+    "linha_do_tempo": {
+      "2025": "2025 — 9 • Encerramento. Fechou ciclos que abriram espaço para reorganizar prioridades.",
+      "2026": "2026 — 1 • Início. Um ano de energia para dar passos concretos e começar projetos.",
+      "2027": "2027 — 2 • Conciliação. Curioso para ver como parcerias podem moldar os próximos passos. (Conteúdo completo bloqueado)"
+    },
+    "cores": {
+      "texto": "Suas cores em 2026\n\n🟠 Vermelho\n🟠 Laranja\n\nEnergia para viver este ciclo com mais consciência.",
+      "cores_nomes": ["Vermelho","Laranja"],
+      "hex": ["#E63946","#F4A261"]
+    }
+  },
+  {
+    "numero": 2,
+    "tema": "Conciliação",
+    "telas": {
+      "tela1": "Seu Ano Pessoal em 2026 é: 2\nConciliação\nCultive encontros que aproximam.",
+      "tela2": [
+        "Pratique ouvir por 2 minutos sem interromper.",
+        "Proponha um pequeno ajuste em uma relação importante.",
+        "Valorize sinais de aproximação na rotina."
+      ],
+      "tela3": "Aproxime-se com curiosidade."
+    },
+    "linha_do_tempo": {
+      "2025": "2025 — 1 • Início. Passos iniciais que pediram coragem e definiram intenções.",
+      "2026": "2026 — 2 • Conciliação. Um ano de ajuste fino nas relações e parcerias.",
+      "2027": "2027 — 3 • Expressão. Uma fase de comunicação ampliada e mais visibilidade. (Conteúdo completo bloqueado)"
+    },
+    "cores": {
+      "texto": "Suas cores em 2026\n\n🟠 Laranja\n🌸 Rosa\n\nEnergia para viver este ciclo com mais consciência.",
+      "cores_nomes": ["Laranja","Rosa"],
+      "hex": ["#F4A261","#E9A0B8"]
+    }
+  },
+  {
+    "numero": 3,
+    "tema": "Expressão",
+    "telas": {
+      "tela1": "Seu Ano Pessoal em 2026 é: 3\nExpressão\nDê voz às suas ideias com leveza.",
+      "tela2": [
+        "Compartilhe uma ideia em voz alta hoje.",
+        "Teste uma frase curta que descreva seu projeto.",
+        "Celebre pequenas vitórias de expressão."
+      ],
+      "tela3": "Mostre sua voz, comece pequeno."
+    },
+    "linha_do_tempo": {
+      "2025": "2025 — 2 • Conciliação. Ajustes relacionais que facilitaram maior expressão.",
+      "2026": "2026 — 3 • Expressão. Uma temporada de ideias e comunicação com mais leveza.",
+      "2027": "2027 — 4 • Estrutura. Temas de método e organização ganham força. (Conteúdo completo bloqueado)"
+    },
+    "cores": {
+      "texto": "Suas cores em 2026\n\n🟡 Amarelo\n💜 Lilás\n\nEnergia para viver este ciclo com mais consciência.",
+      "cores_nomes": ["Amarelo","Lilás"],
+      "hex": ["#F4D35E","#C299F2"]
+    }
+  },
+  {
+    "numero": 4,
+    "tema": "Estrutura",
+    "telas": {
+      "tela1": "Seu Ano Pessoal em 2026 é: 4\nEstrutura\nConstrua com clareza e calma.",
+      "tela2": [
+        "Defina uma rotina de 10 minutos para hoje.",
+        "Organize um espaço simples para trabalhar.",
+        "Divida tarefas grandes em passos menores."
+      ],
+      "tela3": "Um hábito por vez fortalece a base."
+    },
+    "linha_do_tempo": {
+      "2025": "2025 — 3 • Expressão. Período de ideias e exposição que pediu organização posterior.",
+      "2026": "2026 — 4 • Estrutura. Atenção a processo, rotina e construção de alicerces.",
+      "2027": "2027 — 5 • Mudança. Um ano com mais movimento e oportunidades. (Conteúdo completo bloqueado)"
+    },
+    "cores": {
+      "texto": "Suas cores em 2026\n\n🟤 Marrom\n🌲 Verde escuro\n\nEnergia para viver este ciclo com mais consciência.",
+      "cores_nomes": ["Marrom","Verde escuro"],
+      "hex": ["#8B5E3C","#2F6B3A"]
+    }
+  },
+  {
+    "numero": 5,
+    "tema": "Mudança",
+    "telas": {
+      "tela1": "Seu Ano Pessoal em 2026 é: 5\nMudança\nAbra-se para novas possibilidades.",
+      "tela2": [
+        "Experimente algo diferente esta semana.",
+        "Anote uma curiosidade e investigue-a por 10 minutos.",
+        "Aceite um pequeno risco calculado."
+      ],
+      "tela3": "Movimente-se com curiosidade segura."
+    },
+    "linha_do_tempo": {
+      "2025": "2025 — 4 • Estrutura. Período de organização que permitiu mais mobilidade.",
+      "2026": "2026 — 5 • Mudança. Um ano com mais movimento e exploração prática.",
+      "2027": "2027 — 6 • Cuidado. Foco maior em relações próximas e suporte mútuo. (Conteúdo completo bloqueado)"
+    },
+    "cores": {
+      "texto": "Suas cores em 2026\n\n🔷 Turquesa\n🟠 Laranja\n\nEnergia para viver este ciclo com mais consciência.",
+      "cores_nomes": ["Turquesa","Laranja"],
+      "hex": ["#2EC4B6","#F4A261"]
+    }
+  },
+  {
+    "numero": 6,
+    "tema": "Cuidado",
+    "telas": {
+      "tela1": "Seu Ano Pessoal em 2026 é: 6\nCuidado\nPratique presença nas relações que importam.",
+      "tela2": [
+        "Ofereça ajuda concreta a alguém esta semana.",
+        "Reserve tempo para checar como estão as pessoas próximas.",
+        "Pequenos atos de apoio geram confiança."
+      ],
+      "tela3": "Cuidar é um gesto simples e poderoso."
+    },
+    "linha_do_tempo": {
+      "2025": "2025 — 5 • Mudança. Experiências que aumentaram atenção às necessidades alheias.",
+      "2026": "2026 — 6 • Cuidado. Um ano para organizar suporte e responsabilidades afetivas.",
+      "2027": "2027 — 7 • Profundidade. Mais espaço para estudo e interiorização. (Conteúdo completo bloqueado)"
+    },
+    "cores": {
+      "texto": "Suas cores em 2026\n\n🌸 Rosa\n🌿 Verde\n\nEnergia para viver este ciclo com mais consciência.",
+      "cores_nomes": ["Rosa","Verde"],
+      "hex": ["#F8BBD0","#6ABF69"]
+    }
+  },
+  {
+    "numero": 7,
+    "tema": "Profundidade",
+    "telas": {
+      "tela1": "Seu Ano Pessoal em 2026 é: 7\nProfundidade\nUm convite ao estudo e à reflexão.",
+      "tela2": [
+        "Reserve 20 minutos para leitura ou meditação.",
+        "Escreva uma pergunta profunda e procure respostas práticas.",
+        "Valorize pausas para integrar aprendizagens."
+      ],
+      "tela3": "Aprofunde-se com gentileza."
+    },
+    "linha_do_tempo": {
+      "2025": "2025 — 6 • Cuidado. Período de responsabilidades que trouxe reflexão.",
+      "2026": "2026 — 7 • Profundidade. Um ano para consolidar entendimento e pesquisa pessoal.",
+      "2027": "2027 — 8 • Poder pessoal. Mais ação prática e gestão de resultados. (Conteúdo completo bloqueado)"
+    },
+    "cores": {
+      "texto": "Suas cores em 2026\n\n🟣 Roxo\n🔵 Azul profundo\n\nEnergia para viver este ciclo com mais consciência.",
+      "cores_nomes": ["Roxo","Azul profundo"],
+      "hex": ["#6A4C93","#244273"]
+    }
+  },
+  {
+    "numero": 8,
+    "tema": "Poder pessoal",
+    "telas": {
+      "tela1": "Seu Ano Pessoal em 2026 é: 8\nPoder pessoal\nAssuma com confiança e propósito.",
+      "tela2": [
+        "Defina uma meta clara para os próximos 30 dias.",
+        "Liste recursos que precisa e planeje o próximo passo.",
+        "Decisões alinhadas geram impacto sustentável."
+      ],
+      "tela3": "Aja com foco e responsabilidade."
+    },
+    "linha_do_tempo": {
+      "2025": "2025 — 7 • Profundidade. Trabalho interno que preparou mais presença prática.",
+      "2026": "2026 — 8 • Poder pessoal. Ano de assumir gestão e responsabilidade por resultados.",
+      "2027": "2027 — 9 • Encerramento. Síntese de um ciclo antes de novos recomeços. (Conteúdo completo bloqueado)"
+    },
+    "cores": {
+      "texto": "Suas cores em 2026\n\n⬛ Preto\n✨ Dourado\n\nEnergia para viver este ciclo com mais consciência.",
+      "cores_nomes": ["Preto","Dourado"],
+      "hex": ["#000000","#D4AF37"]
+    }
+  },
+  {
+    "numero": 9,
+    "tema": "Encerramento",
+    "telas": {
+      "tela1": "Seu Ano Pessoal em 2026 é: 9\nEncerramento\nHonre o que terminou e abra espaço para o novo.",
+      "tela2": [
+        "Liste 3 aprendizados deste ciclo.",
+        "Escolha o que quer levar adiante e o que liberar.",
+        "Crie um pequeno ritual de encerramento."
+      ],
+      "tela3": "Conclua com cuidado; renove com intenção."
+    },
+    "linha_do_tempo": {
+      "2025": "2025 — 8 • Poder pessoal. Gestão e resultados que antecederam fechamento de temas.",
+      "2026": "2026 — 9 • Encerramento. Um ano para concluir e sintetizar aprendizados.",
+      "2027": "2027 — 1 • Início. Sinais de recomeço com nova energia. (Conteúdo completo bloqueado)"
+    },
+    "cores": {
+      "texto": "Suas cores em 2026\n\n⚪ Branco\n🟣 Violeta\n\nEnergia para viver este ciclo com mais consciência.",
+      "cores_nomes": ["Branco","Violeta"],
+      "hex": ["#FFFFFF","#7D3C98"]
+    }
+  }
+]

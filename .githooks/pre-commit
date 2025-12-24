@@ -1,0 +1,12 @@
+#!/bin/sh
+# Pre-commit hook: roda o validador editorial e aborta o commit se falhar
+# Habilite com: git config core.hooksPath .githooks
+
+python tools/validate_editorial.py
+status=$?
+if [ $status -ne 0 ]; then
+  echo "Commit aborted: validador editorial falhou. Veja a saída acima."
+  exit $status
+fi
+
+exit 0
