@@ -4,19 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mapa 2026 — Convite</title>
-  <style>body{font-family:Inter,system-ui;padding:24px;max-width:720px;margin:0 auto}button{padding:10px 14px;border-radius:8px}</style>
+  <link rel="stylesheet" href="mapa2026.css">
+  <link rel="stylesheet" href="fonts.css">
 </head>
 </body>
   <main class="gamma-page">
     <section class="gamma-card gamma-paywall">
       <h2>O Mapa completo aprofunda a energia do seu ano</h2>
-      <p>Uma leitura editorial aprofundada focada em 2026 — clareza sobre desafios, oportunidades e direção. O passado e o futuro aparecem apenas como contexto.</p>
-      <ul>
-        <li>Leitura editorial aprofundada de 2026</li>
-        <li>Entendimento de desafios, oportunidades e direção</li>
-        <li>Conteúdo pensado para leitura e compartilhamento</li>
-      </ul>
-      <p><strong>R$ 19,90</strong></p>
+      <p>Leitura editorial para acompanhar o que 2026 traz — clareza, ritmo e presença. O texto é pensado para leitura e reflexão, sem promessas ou conselhos.</p>
+      <p class="muted">Contribuição única: <strong>R$ 19,90</strong></p>
 
       <form id="payForm" class="form" novalidate>
         <input type="hidden" id="numero" name="numero" />
@@ -24,9 +20,9 @@
         <input id="name" name="name" required />
         <label class="small">Email (opcional)</label>
         <input id="email" name="email" />
-        <p class="microcopy" style="color:#6B6B6B">Pagamento seguro via Mercado Pago • acesso imediato • sem assinatura</p>
+        <p class="microcopy" style="color:#6B6B6B">Pagamento seguro • acesso imediato • sem assinatura</p>
         <div class="actions"><button id="payBtn" type="submit" class="gamma-cta btn">Acessar leitura completa</button></div>
-        <div id="payMessage" style="margin-top:10px;color:#6B6B6B;font-size:13px"></div>
+        <div id="payMessage" class="spacious" style="color:#6B6B6B;font-size:13px"></div>
       </form>
 
       <script src="main.js" defer></script>

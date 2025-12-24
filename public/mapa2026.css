@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Mapa 2026 — Editorial layout styles */
+=======
+/* Mapa 2026 — Editorial layout styles (public copy) */
+>>>>>>> 04fd26b (feat(ui): editorial polish + mobile-first consistency)
 :root{
   --bg: #F6F4F1;
   --text: #1F1F1F;
@@ -113,10 +117,13 @@ input[type="text"],input[type="date"]{padding:12px 14px;border-radius:10px;borde
 
 /* --------------------------------------------------
    Gamma overrides
+<<<<<<< HEAD
    - Purpose: strict 1:1 visual override for Gamma PDF
    - Do NOT change tokens above. This section only maps
      Gamma classes and assets to the existing design system.
    - TODOs mark missing assets/fonts that must be provided.
+=======
+>>>>>>> 04fd26b (feat(ui): editorial polish + mobile-first consistency)
 -------------------------------------------------- */
 
 /* Asset fallbacks: prefer original Gamma JPG/PNG, fallback to placeholder SVG */
@@ -130,8 +137,12 @@ input[type="text"],input[type="date"]{padding:12px 14px;border-radius:10px;borde
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+<<<<<<< HEAD
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   padding:28px 18px;
+=======
+  display:flex;align-items:center;justify-content:center;
+>>>>>>> 04fd26b (feat(ui): editorial polish + mobile-first consistency)
   overflow:hidden;
 }
 
@@ -139,7 +150,11 @@ input[type="text"],input[type="date"]{padding:12px 14px;border-radius:10px;borde
 .gamma-card{width:100%;max-width:760px;background:rgba(255,255,255,0.98);border-radius:14px;padding:26px;box-shadow:0 18px 40px rgba(15,15,15,0.04);border:1px solid rgba(15,15,15,0.04);box-sizing:border-box}
 
 .gamma-hero .gamma-title{font-family:"Cormorant Garamond", serif;font-size:38px;font-weight:600;margin:0 0 8px;line-height:1.05}
+<<<<<<< HEAD
 .gamma-hero .gamma-subtitle{font-size:15px;color:var(--muted);max-width:52ch;line-height:1.55;margin:0}
+=======
+.gamma-hero .gamma-subtitle{font-size:15px;color:var(--muted);max-width:42ch;line-height:1.6;margin:0}
+>>>>>>> 04fd26b (feat(ui): editorial polish + mobile-first consistency)
 .gamma-note{font-size:0.78rem;color:var(--muted);opacity:0.78;margin-top:8px}
 
 .gamma-step{margin-top:20px}
@@ -157,6 +172,7 @@ input[type="text"],input[type="date"]{padding:12px 14px;border-radius:10px;borde
 .gamma-cta{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600}
 .gamma-cta.secondary{background:transparent;color:var(--text);border:1px solid rgba(31,31,31,0.06)}
 
+<<<<<<< HEAD
 /* Hero-specific content adjustments (mobile-first) */
 .gamma-hero .content{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8px 6px}
 .gamma-hero .title{margin:6px 0 8px}
@@ -165,6 +181,8 @@ input[type="text"],input[type="date"]{padding:12px 14px;border-radius:10px;borde
 .gamma-hero .cta-row .gamma-cta{min-height:44px;padding:12px 20px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center}
 .gamma-hero .gamma-note{opacity:0.66}
 
+=======
+>>>>>>> 04fd26b (feat(ui): editorial polish + mobile-first consistency)
 /* Paywall block styling per Gamma */
 .gamma-paywall{display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(246,244,241,0.6), #fff);border:1px solid rgba(31,31,31,0.04)}
 .gamma-paywall .payment-note{font-size:14px;color:var(--muted)}
@@ -177,6 +195,7 @@ input[type="text"],input[type="date"]{padding:12px 14px;border-radius:10px;borde
   .gamma-cta, .gamma-savepdf, .gamma-paywall .gamma-cta{display:none}
 }
 
+<<<<<<< HEAD
 @media (min-width:641px){
   .gamma-hero{flex-direction:row;padding:32px;min-height:48vh}
   .gamma-hero .visual{flex:0 0 280px;height:340px;border-radius:12px}
@@ -194,3 +213,31 @@ input[type="text"],input[type="date"]{padding:12px 14px;border-radius:10px;borde
 
 
 
+=======
+/* Utility classes added for editorial consistency */
+.measure{max-width:720px;margin:0 auto;padding:24px}
+@media(min-width:768px){.measure{padding:40px}}
+
+.spacious{padding-top:28px;padding-bottom:28px}
+@media(min-width:768px){.spacious{padding-top:40px;padding-bottom:40px}}
+
+.subtitle{color:var(--muted);font-size:16px;line-height:1.65;margin-top:10px}
+
+/* Ensure comfortable button sizing mobile-first */
+.btn{min-height:48px;padding:12px 16px;border-radius:10px;font-weight:600;border:1px solid rgba(0,0,0,0.06);display:inline-flex;align-items:center;justify-content:center;transition:all 120ms ease}
+.btn{width:100%}
+@media(min-width:768px){.btn{width:auto}}
+
+.btn-secondary{background:transparent;color:var(--text);border:1px solid rgba(31,31,31,0.06)}
+.btn-secondary:hover{background:rgba(0,0,0,0.03)}
+
+.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+
+/* Focus-visible for keyboard users */
+a:focus-visible, button:focus-visible, .btn:focus-visible{outline:2px solid rgba(0,0,0,0.12);outline-offset:3px}
+
+/* Small helper for subtle calls */
+.muted-compact{color:var(--muted);font-size:13px}
+
+/* End of public mapa2026.css additions */
+>>>>>>> 04fd26b (feat(ui): editorial polish + mobile-first consistency)

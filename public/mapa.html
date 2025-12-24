@@ -4,19 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mapa 2026 — Seu Mapa</title>
-  <style>body{font-family:Inter,system-ui;padding:24px;max-width:720px;margin:0 auto}button{padding:10px 14px;border-radius:8px}</style>
+  <link rel="stylesheet" href="mapa2026.css">
+  <link rel="stylesheet" href="fonts.css">
 </head>
 <body>
   <main class="gamma-page" role="main">
-    <section class="gamma-card">
+    <section class="gamma-card spacious">
       <h1>Linha do tempo</h1>
       <p class="lead">Uma visão simbólica e contextual — sem recomendações.</p>
 
-      <section id="timeline" class="gamma-timeline timeline"></section>
+      <section id="timeline" class="gamma-timeline timeline" aria-live="polite" aria-busy="true">
+        <p class="visually-hidden">Carregando a linha do tempo…</p>
+      </section>
 
-      <p class="gamma-note share-note" style="color:#6B6B6B;font-size:13px;margin-top:10px">Muita gente salva ou compartilha essa parte.</p>
+      <p class="gamma-note share-note" style="color:#6B6B6B;font-size:13px">Muita gente salva ou compartilha essa parte.</p>
 
-      <div style="margin-top:18px">
+      <div>
         <a class="gamma-cta btn" id="toConvite" href="convite.html">Desvendar 2026</a>
       </div>
     </section>
