@@ -1,8 +1,16 @@
 {
   "version": 2,
   "routes": [
-    { "src": "/sprint3/(.*)", "status": 410 },
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/public/$1" }
+    {
+      "src": "/sprint3/(.*)",
+      "status": 410
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    }
   ]
 }
