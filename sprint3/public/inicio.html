@@ -5,49 +5,40 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mapa 2026 — Micro‑ritual</title>
   <link rel="stylesheet" href="/layout/mapa2026.css">
+  <style>.error{color:#a33;font-size:13px;margin-top:6px}</style>
 </head>
 <body>
   <div class="wrap">
-    <main class="container" role="main" aria-labelledby="micro-title">
-      <div class="progress">Etapa 1 de 2</div>
-      <h2 id="micro-title">Um micro‑ritual rápido</h2>
-      <p class="lead">Reserve um momento — leia com calma e preencha apenas com o necessário. Usamos a data para oferecer a leitura editorial do seu ano.</p>
+    <main class="gamma-page" role="main" aria-labelledby="micro-title">
+      <section class="gamma-card gamma-step">
+        <div class="progress">Etapa 1 de 2</div>
+        <h2 id="micro-title">Um micro‑ritual rápido</h2>
+        <p class="lead">Reserve um momento — leia com calma e preencha apenas o necessário. Usamos os dados apenas localmente para gerar sua leitura.</p>
 
-      <form id="f" class="form" autocomplete="off">
-        <div class="field">
-          <label class="small" for="dob">Data de nascimento</label>
-          <input id="dob" name="dob" type="date" aria-label="Data de nascimento" required />
-        </div>
+        <form id="f" class="form" autocomplete="off" novalidate>
+          <div class="field">
+            <label class="small" for="name">Seu nome</label>
+            <input id="name" name="name" type="text" aria-label="Seu nome" placeholder="Ex.: Ana" required />
+            <div id="err-name" class="error" style="display:none">Por favor, informe seu nome.</div>
+          </div>
 
-        <div class="actions">
-          <button id="btnContinue" class="btn" type="submit">Continuar</button>
-        </div>
-        <p class="microcopy">Só usamos a data para gerar a leitura — nada será compartilhado.</p>
-      </form>
+          <div class="field">
+            <label class="small" for="dob">Data de nascimento</label>
+            <input id="dob" name="dob" type="date" aria-label="Data de nascimento" required />
+            <div id="err-dob" class="error" style="display:none">Informe uma data válida.</div>
+          </div>
+
+          <p class="gamma-note note" style="color:#6B6B6B">Guardamos apenas localmente no seu navegador para que o mapa seja gerado.</p>
+
+          <div class="actions">
+            <button id="btnContinue" class="gamma-cta btn" type="submit">Continuar</button>
+          </div>
+          <p class="microcopy">Só usamos os dados para gerar a leitura — nada será compartilhado.</p>
+        </form>
+      </section>
     </main>
   </div>
 
-  <script>
-    function digitalRoot(n){ while(n>9){ n = String(n).split('').reduce((s,c)=>s+Number(c),0); } return n; }
-    function calcNumeroFromDate(dateStr){
-      // dateStr yyyy-mm-dd
-      const [y,m,d] = (dateStr||"").split('-').map(Number);
-      if(!d||!m||!y) return null;
-      const total = d + m + y; // simple and deterministic
-      return digitalRoot(total);
-    }
-
-    const form = document.getElementById('f');
-    const btn = document.getElementById('btnContinue');
-    form.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      btn.setAttribute('disabled',''); btn.textContent = 'Gerando seu mapa…';
-      const v = document.getElementById('dob').value;
-      const n = calcNumeroFromDate(v);
-      if(!n){ btn.removeAttribute('disabled'); btn.textContent='Continuar'; alert('Data inválida'); return }
-      // small delay for calm UX
-      setTimeout(()=> location.href = `/sprint3/resultado.html?numero=${n}` ,700);
-    });
-  </script>
+  <script src="main.js" defer></script>
 </body>
 </html>

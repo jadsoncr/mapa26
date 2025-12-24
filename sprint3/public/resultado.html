@@ -8,53 +8,24 @@
 </head>
 <body>
   <div class="wrap">
-    <main class="container" role="main" aria-labelledby="res-title">
-      <h1 id="res-title">Seu Mapa 2026</h1>
-      <p class="lead">Uma leitura curta e cuidada — use isso como guia para reflexão, não como regra.</p>
+    <main class="gamma-page" role="main" aria-labelledby="res-title">
+      <section class="gamma-card">
+        <h1 id="res-title">Seu mapa completo de 2026</h1>
+        <p class="lead">Uma leitura calma e editorial — foco exclusivo em 2026.</p>
 
-      <div id="result" class="result">
-        <p class="muted">Carregando a sua leitura…</p>
-      </div>
+        <div id="result" class="result">
+          <p class="muted">Carregando a sua leitura…</p>
+        </div>
 
-      <div class="divider" aria-hidden="true"></div>
+        <div style="margin-top:18px">
+          <button id="printBtn" class="gamma-savepdf btn">Salvar em PDF</button>
+        </div>
 
-      <p class="microcopy">Se algo der errado aqui, retorne e tente novamente. Nenhuma página externa de erro será mostrada.</p>
+        <p class="microcopy" style="margin-top:18px">Mapa 2026 • leitura do seu ano</p>
+      </section>
     </main>
   </div>
 
-  <script>
-    async function load(){
-      const params = new URLSearchParams(location.search);
-      const numero = params.get('numero')||'1';
-      try{
-        const resp = await fetch('/editorial/experiencia_gratuita_sprint2_2026.json');
-        const data = await resp.json();
-        const rec = data.find(r=>String(r.numero)===String(numero));
-        if(!rec) throw new Error('Número não encontrado');
-
-        const out = document.getElementById('result'); out.innerHTML='';
-        const lead = document.createElement('p'); lead.className='lead'; lead.textContent = rec.telas.tela1.split('\n').slice(0,2).join(' — ');
-        out.appendChild(lead);
-
-        // blocks: tela2 (bullets), tela3 (conclusion), cores, linha do tempo
-        const b2 = document.createElement('div'); b2.className='block';
-        rec.telas.tela2.forEach(s=>{ const p = document.createElement('p'); p.textContent = s; p.className='muted'; b2.appendChild(p); });
-        out.appendChild(b2);
-
-        const b3 = document.createElement('div'); b3.className='block'; const h3 = document.createElement('h2'); h3.textContent='Onde focar'; b3.appendChild(h3); const p3 = document.createElement('p'); p3.textContent = rec.telas.tela3; p3.className='muted'; b3.appendChild(p3); out.appendChild(b3);
-
-        const colors = document.createElement('div'); colors.className='block'; const ch = document.createElement('h3'); ch.textContent='Paleta'; colors.appendChild(ch); const pcol = document.createElement('p'); pcol.textContent = (rec.cores && rec.cores.texto) || ''; pcol.className='muted'; colors.appendChild(pcol); out.appendChild(colors);
-
-        const tl = document.createElement('div'); tl.className='block'; const th = document.createElement('h3'); th.textContent='Linha do tempo'; tl.appendChild(th);
-        ['2025','2026','2027'].forEach(y=>{ const p = document.createElement('p'); p.textContent = rec.linha_do_tempo[y] || ''; p.className='muted'; tl.appendChild(p); });
-        out.appendChild(tl);
-
-      }catch(e){
-        const out = document.getElementById('result'); out.innerHTML = '';
-        const p = document.createElement('p'); p.className='muted'; p.textContent = 'Não foi possível gerar a leitura. Por favor, verifique seus dados e tente novamente.'; out.appendChild(p);
-      }
-    }
-    load();
-  </script>
+  <script src="main.js" defer></script>
 </body>
 </html>
