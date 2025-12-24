@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="100%" height="100%" fill="#EFEDE9"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#A0A0A0" font-family="system-ui, Arial, sans-serif" font-size="28">HERO BACKGROUND PLACEHOLDER</text>
+  <text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="#C0C0C0" font-family="system-ui, Arial, sans-serif" font-size="16">Replace with /assets/gamma/hero-bg.jpg from Gamma PDF</text>
+</svg>

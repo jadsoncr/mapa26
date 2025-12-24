@@ -126,7 +126,7 @@ input[type="text"],input[type="date"]{padding:12px 14px;border-radius:10px;borde
   /* mobile-friendly hero height matching Gamma feel */
   min-height:70vh;
   /* subtle white overlay first for legibility, then the real hero image, then placeholder fallback */
-  background-image: linear-gradient(rgba(255,255,255,0.36), rgba(255,255,255,0.12)), url('/layout/hero-bg.jpg'), url('/assets/gamma/hero-bg-placeholder.svg');
+  background-image: linear-gradient(rgba(255,255,255,0.36), rgba(255,255,255,0.12)), url('hero-bg.jpg'), url('/assets/gamma/hero-bg-placeholder.svg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -187,5 +187,10 @@ input[type="text"],input[type="date"]{padding:12px 14px;border-radius:10px;borde
 /* TODO markers: fonts and exact assets (Gamma originals) */
 /* TODO: Add original Gamma font files and remove fallback system fonts */
 /* TODO: Replace /assets/gamma/*-placeholder.svg with original JPG/PNG exports from Gamma PDF */
+
+
+
+
+
 
 
