@@ -126,11 +126,12 @@ input[type="text"],input[type="date"]{padding:12px 14px;border-radius:10px;borde
   /* mobile-friendly hero height matching Gamma feel */
   min-height:70vh;
   /* subtle white overlay first for legibility, then the real hero image, then placeholder fallback */
-  background-image: linear-gradient(rgba(255,255,255,0.36), rgba(255,255,255,0.12)), url('/layout/hero-bg.jpg'), url('/assets/gamma/hero-bg-placeholder.svg');
+  background-image: linear-gradient(rgba(255,255,255,0.36), rgba(255,255,255,0.12)), url('hero-bg.jpg'), url('/assets/gamma/hero-bg-placeholder.svg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  display:flex;align-items:center;justify-content:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:28px 18px;
   overflow:hidden;
 }
 
@@ -138,7 +139,7 @@ input[type="text"],input[type="date"]{padding:12px 14px;border-radius:10px;borde
 .gamma-card{width:100%;max-width:760px;background:rgba(255,255,255,0.98);border-radius:14px;padding:26px;box-shadow:0 18px 40px rgba(15,15,15,0.04);border:1px solid rgba(15,15,15,0.04);box-sizing:border-box}
 
 .gamma-hero .gamma-title{font-family:"Cormorant Garamond", serif;font-size:38px;font-weight:600;margin:0 0 8px;line-height:1.05}
-.gamma-hero .gamma-subtitle{font-size:15px;color:var(--muted);max-width:42ch;line-height:1.6;margin:0}
+.gamma-hero .gamma-subtitle{font-size:15px;color:var(--muted);max-width:52ch;line-height:1.55;margin:0}
 .gamma-note{font-size:0.78rem;color:var(--muted);opacity:0.78;margin-top:8px}
 
 .gamma-step{margin-top:20px}
@@ -156,6 +157,14 @@ input[type="text"],input[type="date"]{padding:12px 14px;border-radius:10px;borde
 .gamma-cta{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600}
 .gamma-cta.secondary{background:transparent;color:var(--text);border:1px solid rgba(31,31,31,0.06)}
 
+/* Hero-specific content adjustments (mobile-first) */
+.gamma-hero .content{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8px 6px}
+.gamma-hero .title{margin:6px 0 8px}
+.gamma-hero .subtitle{max-width:52ch;line-height:1.55;margin:0 0 12px}
+.gamma-hero .cta-row{display:flex;flex-direction:column;gap:12px;margin-top:16px;align-items:center}
+.gamma-hero .cta-row .gamma-cta{min-height:44px;padding:12px 20px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center}
+.gamma-hero .gamma-note{opacity:0.66}
+
 /* Paywall block styling per Gamma */
 .gamma-paywall{display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(246,244,241,0.6), #fff);border:1px solid rgba(31,31,31,0.04)}
 .gamma-paywall .payment-note{font-size:14px;color:var(--muted)}
@@ -168,8 +177,20 @@ input[type="text"],input[type="date"]{padding:12px 14px;border-radius:10px;borde
   .gamma-cta, .gamma-savepdf, .gamma-paywall .gamma-cta{display:none}
 }
 
+@media (min-width:641px){
+  .gamma-hero{flex-direction:row;padding:32px;min-height:48vh}
+  .gamma-hero .visual{flex:0 0 280px;height:340px;border-radius:12px}
+  .gamma-hero .content{align-items:flex-start;text-align:left;padding-left:22px}
+  .gamma-hero .cta-row{flex-direction:row;align-items:center}
+}
+
 /* TODO markers: fonts and exact assets (Gamma originals) */
 /* TODO: Add original Gamma font files and remove fallback system fonts */
 /* TODO: Replace /assets/gamma/*-placeholder.svg with original JPG/PNG exports from Gamma PDF */
+
+
+
+
+
 
 
