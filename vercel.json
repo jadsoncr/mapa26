@@ -1,9 +1,8 @@
 {
-  "redirects": [
-    {
-      "source": "/sprint3/:path*",
-      "destination": "/",
-      "permanent": true
-    }
+  "version": 2,
+  "routes": [
+    { "src": "/sprint3/(.*)", "status": 410 },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/public/$1" }
   ]
 }
