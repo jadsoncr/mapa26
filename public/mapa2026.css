@@ -12,6 +12,13 @@
   --beige: #DCC9A0;
   --amber: #C87E2A;
 
+  /* On-dark tokens for better contrast on dark heroes */
+  --on-dark: #F6F1EA;
+  --on-dark-2: rgba(246,241,234,.82);
+  --on-dark-3: rgba(246,241,234,.68);
+  --on-dark-line: rgba(246,241,234,.35);
+  --shadow-dark: 0 2px 10px rgba(0,0,0,.35);
+
   --measure: 720px;
 
   --space-1: 8px;
@@ -67,6 +74,48 @@ p{
 #banner .content{
   max-width:42rem;
 }
+
+/* Overlay for dark heroes (improves legibility on dark backgrounds) */
+#banner, .gamma-hero, .gamma-paywall{
+  position:relative;
+  overflow:hidden;
+}
+
+#banner::before, .gamma-hero::before, .gamma-paywall::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.42);
+  z-index:0;
+  pointer-events:none;
+}
+
+#banner .inner, .gamma-hero .content, .gamma-paywall > *{
+  position:relative;
+  z-index:1;
+}
+
+/* Headings on dark backgrounds */
+#banner h1, #banner h2, .gamma-hero h1, .gamma-paywall h2, #banner header h1{
+  color:var(--on-dark);
+  text-shadow: var(--shadow-dark);
+}
+
+/* Dark-area subtitles: slightly reduced opacity but above 0.68 for iPhone
+   Use on-dark tokens to ensure contrast. */
+#banner .subtitle, .gamma-paywall .subtitle{
+  color:var(--on-dark-2);
+  opacity:0.84; /* between 0.82 and 0.86 */
+}
+
+/* Whisper / small notes on dark backgrounds: lower emphasis but readable */
+#banner .whisper, .gamma-paywall .whisper{
+  color:var(--on-dark-3);
+  opacity:0.72; /* between 0.68 and 0.74 */
+}
+
+/* dividers and subtle lines on dark areas */
+.gamma-paywall hr, #banner hr{border-color:var(--on-dark-line)}
 
 .subtitle{
   font-size:16px;
@@ -245,4 +294,22 @@ body{font-size:16px}
 #page-wrapper{width:100%}
 
 /* end of Editorial UX bridge */
+
+/* ---------- Minimal Layout System ---------- */
+.page{ padding:32px 0; }
+.container{ max-width:980px; margin:0 auto; padding:0 20px; }
+.section{ margin:48px 0; }
+.card{ background:#fff; border-radius:16px; padding:28px; box-shadow:0 10px 30px rgba(0,0,0,.06); border:1px solid rgba(0,0,0,.06); }
+.grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:start; }
+
+@media (max-width:820px){
+  .grid-2{ grid-template-columns:1fr; }
+  .section{ margin:32px 0; }
+  .card{ padding:22px; }
+}
+
+/* Small utilities to avoid conflicting with existing template classes */
+.visually-hidden{ position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap }
+
+/* end */
 

@@ -112,18 +112,56 @@
     const prevYear = TARGET_YEAR - 1;
     const currYear = TARGET_YEAR;
     const nextYear = TARGET_YEAR + 1;
+    // helper to create a short teaser (canonical implementation)
+    function teaser(text) {
+      const t = String(text || "").trim();
+      if (!t) return "";
 
-    const rows = [
-      { number: prev, year: prevYear, keyword: (NUMBERS[prev] && NUMBERS[prev].keyword) || '', text: (NUMBERS[prev] && (NUMBERS[prev].timelineText || NUMBERS[prev].impact)) || '' },
-      { number: current, year: currYear, keyword: (NUMBERS[current] && NUMBERS[current].keyword) || '', text: (NUMBERS[current] && (NUMBERS[current].timelineText || NUMBERS[current].impact)) || '' },
-      { number: next, year: nextYear, keyword: (NUMBERS[next] && NUMBERS[next].keyword) || '', text: (NUMBERS[next] && (NUMBERS[next].timelineText || NUMBERS[next].impact)) || '' }
+      // First sentence heuristic
+      const m = t.match(/^(.+?[.!?])(\s|$)/);
+      let out = (m ? m[1] : t);
+
+      out = out.replace(/\s+/g, " ").trim();
+
+      if (out.length > 140) {
+        out = out.slice(0, 140).trim();
+        // avoid ending with weak punctuation
+        out = out.replace(/[,:;\-–—]\s*$/g, "").trim();
+      }
+
+      if (!/[.!?]$/.test(out)) out += ".";
+      return out;
+    }
+
+    const paid = localStorage.getItem('mapa2026_paid') === 'true';
+
+    const numbersToRender = [
+      { number: prev, year: prevYear },
+      { number: current, year: currYear },
+      { number: next, year: nextYear }
     ];
 
     container.innerHTML = '';
-    rows.forEach(r=>{
+    numbersToRender.forEach(nr=>{
+      const idx = nr.number;
+      const entry = NUMBERS[idx] || {};
+      const keyword = entry.keyword || '';
+      let contentText = '';
+      if(paid){
+        contentText = entry.timelineText || entry.impact || '';
+      } else {
+        // before payment: only show keyword + impact + a short teaser
+        const impact = entry.impact || '';
+        const shortTease = entry.timelineText ? teaser(entry.timelineText) : '';
+        contentText = (impact ? impact + ' ' : '') + (shortTease ? shortTease : '');
+      }
+
       const item = document.createElement('div'); item.className='timeline-entry';
-      const h = document.createElement('h3'); h.textContent = r.number + ' • ' + r.year + ' — ' + r.keyword; item.appendChild(h);
-      const p = document.createElement('p'); p.textContent = r.text; p.style.color = '#6B6B6B'; item.appendChild(p);
+      const h = document.createElement('h3'); h.textContent = nr.number + ' • ' + nr.year + ' — ' + keyword; item.appendChild(h);
+      const p = document.createElement('p'); p.textContent = contentText; p.style.color = '#6B6B6B'; item.appendChild(p);
+
+      // no per-card unlock link when not paid; teaser + impact already shown above
+
       container.appendChild(item);
     });
 
