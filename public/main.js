@@ -112,18 +112,49 @@
     const prevYear = TARGET_YEAR - 1;
     const currYear = TARGET_YEAR;
     const nextYear = TARGET_YEAR + 1;
+    // helper to create a short teaser
+    function teaser(text){
+      if(!text) return '';
+      const cleaned = String(text).replace(/\s+/g,' ').trim();
+      const firstSentenceEnd = cleaned.indexOf('. ');
+      if(firstSentenceEnd !== -1 && firstSentenceEnd < 120) return cleaned.slice(0, firstSentenceEnd+1);
+      return cleaned.length > 120 ? cleaned.slice(0,120).trim() + '…' : cleaned;
+    }
 
-    const rows = [
-      { number: prev, year: prevYear, keyword: (NUMBERS[prev] && NUMBERS[prev].keyword) || '', text: (NUMBERS[prev] && (NUMBERS[prev].timelineText || NUMBERS[prev].impact)) || '' },
-      { number: current, year: currYear, keyword: (NUMBERS[current] && NUMBERS[current].keyword) || '', text: (NUMBERS[current] && (NUMBERS[current].timelineText || NUMBERS[current].impact)) || '' },
-      { number: next, year: nextYear, keyword: (NUMBERS[next] && NUMBERS[next].keyword) || '', text: (NUMBERS[next] && (NUMBERS[next].timelineText || NUMBERS[next].impact)) || '' }
+    const paid = localStorage.getItem('mapa2026_paid') === 'true';
+
+    const numbersToRender = [
+      { number: prev, year: prevYear },
+      { number: current, year: currYear },
+      { number: next, year: nextYear }
     ];
 
     container.innerHTML = '';
-    rows.forEach(r=>{
+    numbersToRender.forEach(nr=>{
+      const idx = nr.number;
+      const entry = NUMBERS[idx] || {};
+      const keyword = entry.keyword || '';
+      let contentText = '';
+      if(paid){
+        contentText = entry.timelineText || entry.impact || '';
+      } else {
+        // before payment: only show keyword + impact + a short teaser
+        const impact = entry.impact || '';
+        const shortTease = entry.timelineText ? teaser(entry.timelineText) : '';
+        contentText = (impact ? impact + ' ' : '') + (shortTease ? shortTease : '');
+      }
+
       const item = document.createElement('div'); item.className='timeline-entry';
-      const h = document.createElement('h3'); h.textContent = r.number + ' • ' + r.year + ' — ' + r.keyword; item.appendChild(h);
-      const p = document.createElement('p'); p.textContent = r.text; p.style.color = '#6B6B6B'; item.appendChild(p);
+      const h = document.createElement('h3'); h.textContent = nr.number + ' • ' + nr.year + ' — ' + keyword; item.appendChild(h);
+      const p = document.createElement('p'); p.textContent = contentText; p.style.color = '#6B6B6B'; item.appendChild(p);
+
+      if(!paid){
+        const unlock = document.createElement('div'); unlock.style.marginTop='10px';
+        const a = document.createElement('a'); a.href = 'convite.html'; a.className = 'button'; a.textContent = 'Desvendar 2026';
+        unlock.appendChild(a);
+        item.appendChild(unlock);
+      }
+
       container.appendChild(item);
     });
 

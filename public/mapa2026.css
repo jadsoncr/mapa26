@@ -12,6 +12,13 @@
   --beige: #DCC9A0;
   --amber: #C87E2A;
 
+  /* On-dark tokens for better contrast on dark heroes */
+  --on-dark: #F6F1EA;
+  --on-dark-2: rgba(246,241,234,.82);
+  --on-dark-3: rgba(246,241,234,.68);
+  --on-dark-line: rgba(246,241,234,.35);
+  --shadow-dark: 0 2px 10px rgba(0,0,0,.35);
+
   --measure: 720px;
 
   --space-1: 8px;
@@ -67,6 +74,40 @@ p{
 #banner .content{
   max-width:42rem;
 }
+
+/* Overlay for dark heroes (improves legibility on dark backgrounds) */
+#banner, .gamma-hero, .gamma-paywall{
+  position:relative;
+  overflow:hidden;
+}
+
+#banner::before, .gamma-hero::before, .gamma-paywall::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.42);
+  z-index:0;
+  pointer-events:none;
+}
+
+#banner .inner, .gamma-hero .content, .gamma-paywall > *{
+  position:relative;
+  z-index:1;
+}
+
+/* Headings on dark backgrounds */
+#banner h1, #banner h2, .gamma-hero h1, .gamma-paywall h2, #banner header h1{
+  color:var(--on-dark);
+  text-shadow: var(--shadow-dark);
+}
+
+#banner .subtitle, #banner .whisper, .gamma-paywall .subtitle, .gamma-paywall .whisper{
+  color:var(--on-dark-2);
+  opacity:0.92; /* ensure minimum readability on iPhone */
+}
+
+/* dividers and subtle lines on dark areas */
+.gamma-paywall hr, #banner hr{border-color:var(--on-dark-line)}
 
 .subtitle{
   font-size:16px;
