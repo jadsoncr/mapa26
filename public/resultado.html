@@ -4,30 +4,46 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mapa 2026 — Resultado</title>
-  <link rel="stylesheet" href="mapa2026.css">
   <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="layout/assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="layout/assets/css/main.css">
+  <link rel="stylesheet" href="mapa2026.css">
 </head>
-<body>
-  <div class="wrap">
-    <main class="gamma-page" role="main" aria-labelledby="res-title">
-      <section class="gamma-card spacious">
-        <h1 id="res-title">Seu mapa completo de 2026</h1>
-        <p class="lead">Uma leitura calma e editorial — foco em 2026.</p>
-        <p class="whisper">Leia no seu ritmo. Volte quando quiser.</p>
+<body class="index">
+  <div id="page-wrapper">
 
-        <div id="result" class="result" aria-live="polite">
-          <p class="muted">Carregando a sua leitura…</p>
-        </div>
+    <section id="banner">
+      <div class="inner">
+        <header>
+          <h1 id="res-title">Seu mapa completo de 2026</h1>
+          <p class="lead">Uma leitura calma e editorial — foco em 2026.</p>
+          <p class="whisper">Leia no seu ritmo. Volte quando quiser.</p>
+        </header>
+      </div>
+    </section>
 
-        <p class="muted-compact" style="margin-top:12px">Leia mais devagar: cada bloco foi pensado para reflexão.</p>
+    <article id="main">
+      <div class="inner container">
+        <section class="wrapper special container">
+          <div class="gamma-card spacious">
+            <div id="result" class="result" aria-live="polite">
+              <p class="muted">Carregando a sua leitura…</p>
+            </div>
 
-        <div>
-          <button id="printBtn" class="gamma-savepdf btn">Salvar em PDF</button>
-        </div>
+            <p class="muted-compact" style="margin-top:12px">Leia mais devagar: cada bloco foi pensado para reflexão.</p>
 
-        <p class="microcopy">Mapa 2026 • leitura do seu ano</p>
-      </section>
-    </main>
+            <div>
+              <button id="printBtn" class="gamma-savepdf btn">Salvar em PDF</button>
+            </div>
+
+            <p class="microcopy">Mapa 2026 • leitura do seu ano</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <footer id="footer"><ul class="copyright"><li>&copy; Mapa 2026</li></ul></footer>
+
   </div>
 
   <script src="data/mapa2026-data.js"></script>

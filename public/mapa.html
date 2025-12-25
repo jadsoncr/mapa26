@@ -4,27 +4,45 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mapa 2026 — Seu Mapa</title>
-  <link rel="stylesheet" href="mapa2026.css">
   <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="layout/assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="layout/assets/css/main.css">
+  <link rel="stylesheet" href="mapa2026.css">
 </head>
-<body>
-  <main class="gamma-page" role="main">
-    <section class="gamma-card spacious">
-      <h1>Linha do tempo</h1>
-    <p class="lead">Uma visão simbólica e contextual — sem recomendações.</p>
-    <p class="whisper">Contexto não muda o passado. Mas muda o caminho.</p>
+<body class="index">
+  <div id="page-wrapper">
 
-      <section id="timeline" class="gamma-timeline timeline" aria-live="polite" aria-busy="true">
-        <p class="visually-hidden">Carregando a linha do tempo…</p>
-      </section>
-
-      <p class="gamma-note share-note" style="color:#6B6B6B;font-size:13px">Muita gente salva ou compartilha essa parte.</p>
-
-      <div>
-        <a class="gamma-cta btn" id="toConvite" href="convite.html">Desvendar 2026</a>
+    <section id="banner">
+      <div class="inner">
+        <header>
+          <h1>Linha do tempo</h1>
+          <p class="lead">Uma visão simbólica e contextual — sem recomendações.</p>
+          <p class="whisper">Contexto não muda o passado. Mas muda o caminho.</p>
+        </header>
       </div>
     </section>
-  </main>
+
+    <article id="main">
+      <div class="inner container">
+        <section class="wrapper special container">
+          <div class="gamma-card spacious">
+            <section id="timeline" class="gamma-timeline timeline" aria-live="polite" aria-busy="true">
+              <p class="visually-hidden">Carregando a linha do tempo…</p>
+            </section>
+
+            <p class="gamma-note share-note" style="color:#6B6B6B;font-size:13px">Muita gente salva ou compartilha essa parte.</p>
+
+            <div>
+              <a class="gamma-cta btn" id="toConvite" href="convite.html">Desvendar 2026</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <footer id="footer"><ul class="copyright"><li>&copy; Mapa 2026</li></ul></footer>
+
+  </div>
 
   <script src="data/mapa2026-data.js"></script>
   <script src="main.js" defer></script>

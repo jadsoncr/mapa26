@@ -1,36 +1,56 @@
 <!doctype html>
 <html lang="pt-BR">
+<!doctype html>
+<html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mapa 2026 — Convite</title>
-  <link rel="stylesheet" href="mapa2026.css">
   <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="layout/assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="layout/assets/css/main.css">
+  <link rel="stylesheet" href="mapa2026.css">
 </head>
-</body>
-  <main class="gamma-page">
-    <section class="gamma-card gamma-paywall">
-      <p class="whisper">Há profundidades que pedem mais tempo.</p>
-      <h2>Aprofunde a leitura do seu ano</h2>
-      <p>Você já viu o tom do seu número. A leitura completa aprofunda o contexto, os ciclos e os pontos de atenção para atravessar 2026 com mais clareza.</p>
-      <p class="muted">Acesso único por <strong>R$ 19,90</strong></p>
+<body class="index">
+  <div id="page-wrapper">
 
-      <div class="form" role="form" aria-labelledby="pay-instructions">
-        <input type="hidden" id="numero" name="numero" />
-        <label class="small">Nome</label>
-        <input id="name" name="name" />
-        <label class="small">Email (opcional)</label>
-        <input id="email" name="email" />
-        <p class="microcopy" style="color:#6B6B6B">Pagamento seguro pelo Mercado Pago • acesso imediato • sem assinatura</p>
-        <div class="actions"><a id="payBtn" class="gamma-cta btn" href="https://mpago.li/1cKCGoP">Acessar minha leitura completa</a></div>
-        <div id="payMessage" class="spacious" style="color:#6B6B6B;font-size:13px"></div>
+    <section id="banner">
+      <div class="inner">
+        <header>
+          <h1>Aprofunde a leitura do seu ano</h1>
+          <p class="subtitle">Você já viu o tom do seu número. A leitura completa aprofunda o contexto, os ciclos e os pontos de atenção para atravessar 2026 com mais clareza.</p>
+          <p class="whisper">Há profundidades que pedem mais tempo.</p>
+        </header>
       </div>
-
-      <script src="data/mapa2026-data.js"></script>
-      <script src="main.js" defer></script>
     </section>
-  </main>
 
+    <article id="main">
+      <div class="inner container">
+        <section class="wrapper special container">
+          <div class="gamma-card gamma-paywall">
+            <p class="muted">Acesso único por <strong>R$ 19,90</strong></p>
+
+            <div class="form" role="form" aria-labelledby="pay-instructions">
+              <input type="hidden" id="numero" name="numero" />
+              <label class="small">Nome</label>
+              <input id="name" name="name" />
+              <label class="small">Email (opcional)</label>
+              <input id="email" name="email" />
+              <p class="microcopy" style="color:#6B6B6B">Pagamento seguro pelo Mercado Pago • acesso imediato • sem assinatura</p>
+              <div class="actions"><a id="payBtn" class="gamma-cta btn" href="https://mpago.li/1cKCGoP">Acessar minha leitura completa</a></div>
+              <div id="payMessage" class="spacious" style="color:#6B6B6B;font-size:13px"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <footer id="footer"><ul class="copyright"><li>&copy; Mapa 2026</li></ul></footer>
+
+  </div>
+
+  <script src="data/mapa2026-data.js"></script>
+  <script src="main.js" defer></script>
 </body>
 </html>
 

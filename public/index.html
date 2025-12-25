@@ -4,37 +4,70 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mapa 2026 — Landing</title>
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="layout/assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="layout/assets/css/main.css">
   <link rel="stylesheet" href="mapa2026.css">
 </head>
-<body>
-  <div class="wrap">
-    <main class="gamma-page" role="main" aria-labelledby="hero-title">
-      <section class="gamma-card gamma-hero" aria-labelledby="hero-title">
-        <div class="visual" aria-hidden="true"><div class="art"></div></div>
-        <div class="content">
-          <h1 id="hero-title" class="title">Seu Mapa de 2026.</h1>
+<body class="index">
+  <div id="page-wrapper">
+
+    <!-- Banner / Hero (transplanted shell) -->
+    <section id="banner">
+      <div class="inner">
+        <header>
+          <h1 id="hero-title">Seu Mapa de 2026.</h1>
           <p class="subtitle">Uma leitura consciente para atravessar 2026 com mais clareza e presença.</p>
           <p class="whisper">Não é sobre prever. É sobre atravessar.</p>
+        </header>
+        <footer>
+          <ul class="buttons stacked">
+            <li><a href="inicio.html" class="button primary">Criar meu Mapa 2026</a></li>
+          </ul>
+        </footer>
+      </div>
+    </section>
 
-          <div class="what-you-get spacious">
-            <h3 class="subtitle small">O que você recebe</h3>
-            <ul class="what-list">
-              <li>Síntese clara do seu Ano Pessoal em 2026</li>
-              <li>Linha do tempo 2025–2027 para ver o contexto</li>
-              <li>Cards visuais prontos para salvar e compartilhar</li>
+    <!-- Main content (one section transplanted) -->
+    <article id="main">
+      <header class="special container">
+        <h2>O que este mapa te ajuda a enxergar</h2>
+      </header>
+
+      <section class="wrapper style2 container special-alt">
+        <div class="row gtr-50">
+          <div class="col-8 col-12-narrower">
+            <header>
+              <h2>O que este mapa te ajuda a enxergar</h2>
+            </header>
+            <p class="muted">Uma leitura prática e visual para navegar 2026 com mais presença.</p>
+            <footer>
+              <ul class="buttons">
+                <li><a href="inicio.html" class="button primary">Criar meu Mapa 2026</a></li>
+              </ul>
+            </footer>
+          </div>
+          <div class="col-4 col-12-narrower imp-narrower">
+            <ul class="featured-icons">
+              <li><span class="icon fa-check"><span class="label">O tom do seu Ano Pessoal em 2026, sem ruído</span></span></li>
+              <li><span class="icon fa-check"><span class="label">Como 2025, 2026 e 2027 se conectam na sua trajetória</span></span></li>
+              <li><span class="icon fa-check"><span class="label">Leituras visuais para voltar sempre que precisar de clareza</span></span></li>
             </ul>
           </div>
-
-          <div class="cta-row">
-            <a class="gamma-cta btn" href="inicio.html">Criar meu Mapa 2026</a>
-          </div>
-          <p class="gamma-note privacy">Gerado no seu navegador — sem envio de dados.</p>
         </div>
       </section>
+    </article>
 
-      
-    </main>
+    <!-- Footer (minimal) -->
+    <footer id="footer">
+      <ul class="copyright">
+        <li>&copy; Mapa 2026</li>
+      </ul>
+    </footer>
+
   </div>
+
+  <!-- Keep data and main scripts (order required) -->
   <script src="data/mapa2026-data.js"></script>
   <script src="main.js" defer></script>
 </body>
