@@ -1,166 +1,248 @@
-/* Mapa 2026 — Editorial layout styles (cleaned & mobile-first) */
-/* Mapa 2026 — Editorial layout styles (cleaned & mobile-first) */
+/* =========================================================
+   MAPA 2026 — Editorial UI (clean, mobile-first, stable)
+   ========================================================= */
 
+/* ---------- Design Tokens ---------- */
 :root{
   --bg: #F6F4F1;
+  --surface: #FFFFFF;
   --text: #1F1F1F;
   --muted: #6B6B6B;
   --accent: #2F5D8C;
-  --amber: #C87E2A; /* calm error tone */
+  --beige: #DCC9A0;
+  --amber: #C87E2A;
+
   --measure: 720px;
-  --space-1:8px;
-  --space-2:16px;
-  --space-3:24px;
-  --space-4:32px;
-  --space-5:48px;
-  --beige: #DCC9A0; /* warm beige/gold */
+
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
 }
 
+/* ---------- Base ---------- */
 *{box-sizing:border-box}
-html,body{height:100%}
 html{font-size:16px}
 body{
+  margin:0;
   background:var(--bg);
   color:var(--text);
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  margin:0; padding:28px 16px; display:flex; align-items:flex-start; justify-content:center;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
   line-height:1.6;
+  -webkit-font-smoothing:antialiased;
 }
-.wrap{width:100%;max-width:var(--measure);margin:0 auto}
 
-/* Hero / gamma wrapper */
-.gamma-hero{width:100%;border-radius:12px;min-height:60vh;background-image: linear-gradient(rgba(255,255,255,0.36), rgba(255,255,255,0.12)), url('hero-bg.jpg'), url('/assets/gamma/hero-bg-placeholder.svg');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px}
-.gamma-page{min-height:100vh;padding:20px 12px;display:flex;align-items:flex-start;justify-content:center;background:transparent}
-.gamma-card{width:100%;max-width:760px;background:rgba(255,255,255,0.98);border-radius:14px;padding:22px;box-shadow:0 18px 40px rgba(15,15,15,0.04);border:1px solid rgba(15,15,15,0.04);box-sizing:border-box}
+.wrap{
+  width:100%;
+  max-width:var(--measure);
+  margin:0 auto;
+  padding:var(--space-3) var(--space-2);
+}
 
-/* Typography */
-h1,h2,h3{font-family:"Cormorant Garamond", serif; color:var(--text); margin:0 0 var(--space-2); line-height:1.12}
+/* ---------- Typography ---------- */
+h1,h2,h3{
+  font-family:"Cormorant Garamond", serif;
+  line-height:1.15;
+  margin:0 0 var(--space-2);
+}
+
 h1{font-size:34px;font-weight:600}
-h2{font-size:20px;font-weight:500;color:var(--text)}
-p{color:var(--muted);margin:0 0 var(--space-2);font-size:16px;line-height:1.6}
+h2{font-size:20px;font-weight:500}
+h3{font-size:16px;font-weight:600}
+
+p{
+  margin:0 0 var(--space-2);
+  font-size:16px;
+  color:var(--muted);
+}
+
 .small{font-size:14px}
 
-/* Utility spacing & measure */
-.measure{max-width:720px;margin:0 auto;padding:var(--space-2)}
-.spacious{padding-top:var(--space-3);padding-bottom:var(--space-3)}
-.subtitle{color:var(--muted);font-size:16px;line-height:1.65;margin-top:var(--space-1)}
-
-/* 'O que você recebe' list */
-.what-list{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px}
-.what-list li{position:relative;padding-left:20px;color:var(--text);font-size:15px}
-.what-list li::before{content:"";position:absolute;left:0;top:8px;width:10px;height:10px;border-radius:50%;background:var(--beige);box-shadow:inset 0 -1px 0 rgba(0,0,0,0.03)}
-
-/* whisper phrase under subtitle */
-.whisper{color:var(--muted);opacity:0.9;font-size:14px;margin-top:6px;font-style:italic}
-
-/* spacing tweaks to ensure breathing room above CTA */
-.what-you-get{margin-top:var(--space-2)}
-.cta-row{margin-top:var(--space-3)}
-
-/* Buttons — mobile-first premium styling */
-.gamma-cta, .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:0 18px;background:var(--accent);color:#fff;text-decoration:none;border:0;font-weight:600;border-radius:14px;min-height:52px;box-shadow:0 6px 18px rgba(47,93,140,0.08);transition:transform 120ms ease, box-shadow 120ms ease}
-.gamma-cta:focus-visible, .btn:focus-visible{outline:3px solid rgba(47,93,140,0.12);outline-offset:3px}
-.gamma-cta:hover, .btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(47,93,140,0.09)}
-.gamma-cta:active, .btn:active{transform:translateY(0);box-shadow:0 4px 12px rgba(47,93,140,0.06)}
-.btn[disabled]{opacity:0.6;cursor:default}
-
-/* Form */
-.form{background:transparent;margin-top:var(--space-2)}
-.field{display:flex;flex-direction:column;gap:8px;margin-bottom:var(--space-2)}
-label.small{color:var(--muted);font-size:13px}
-input[type="text"],input[type="date"]{padding:12px 14px;border-radius:10px;border:1px solid rgba(31,31,31,0.06);background:#fff;font-size:16px;min-width:160px}
-
-.progress{font-size:13px;color:var(--muted);margin-bottom:12px}
-
-/* helper + error styles */
-.helper{color:var(--muted);font-size:13px;margin-top:6px}
-.error{color:var(--amber);font-size:13px;margin-top:6px;display:none}
-
-/* small preview card for desire */
-.mini-preview .card{background:#fff;border-radius:10px;border:1px solid rgba(15,15,15,0.04);box-shadow:0 6px 18px rgba(15,15,15,0.04);margin-top:var(--space-2)}
-.muted-compact{color:var(--muted);font-size:13px}
-
-/* timeline / preview adjustments kept from original where needed */
-.card h2,.card h3{font-family:"Cormorant Garamond", serif;font-weight:600;letter-spacing:0.2px;margin:0 0 10px}
-.card p{color:#111;line-height:1.6;margin:0 0 12px}
-
-/* preview: impact and secondary CTA subtlety */
-.impact{font-size:16px;color:var(--text);line-height:1.6;margin-top:6px}
-.swatches{margin-top:12px}
-
-/* make secondary action visually quiet on mobile and subtle on desktop */
-.btn-secondary{background:transparent;color:var(--muted);border:0;padding:0 6px;min-height:0;height:auto;font-size:14px;box-shadow:none}
-@media (max-width:430px){
-  .btn-secondary{display:none}
+/* ---------- Hero ---------- */
+#banner{
+  padding:var(--space-4) var(--space-2);
 }
 
-/* Responsive rules: ensure comfortable view between 360–430px */
+#banner .content{
+  max-width:42rem;
+}
+
+.subtitle{
+  font-size:16px;
+  line-height:1.65;
+}
+
+.whisper{
+  font-size:14px;
+  font-style:italic;
+  opacity:.9;
+  margin-top:6px;
+}
+
+/* ---------- Feature List ---------- */
+.what-list{
+  list-style:none;
+  padding:0;
+  margin:var(--space-2) 0 0;
+  display:grid;
+  gap:6px;
+}
+
+.what-list li{
+  position:relative;
+  padding-left:20px;
+  font-size:15px;
+  color:var(--text);
+}
+
+.what-list li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:8px;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--beige);
+}
+
+/* ---------- Buttons ---------- */
+.button,
+.gamma-cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:52px;
+  padding:0 18px;
+  border-radius:14px;
+  background:var(--accent);
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  border:0;
+  box-shadow:0 6px 18px rgba(47,93,140,.08);
+}
+
+.button:hover,
+.gamma-cta:hover{
+  transform:translateY(-1px);
+}
+
+.btn-secondary{
+  background:none;
+  color:var(--muted);
+  box-shadow:none;
+  padding:0;
+  min-height:auto;
+}
+
+/* ---------- Forms ---------- */
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-bottom:var(--space-2);
+}
+
+input[type="text"],
+input[type="date"]{
+  padding:12px 14px;
+  font-size:16px;
+  border-radius:10px;
+  border:1px solid rgba(0,0,0,.08);
+}
+
+/* ---------- Timeline ---------- */
+.timeline-entry{
+  background:var(--surface);
+  border-radius:10px;
+  padding:14px;
+  margin-bottom:14px;
+  border:1px solid rgba(0,0,0,.04);
+}
+
+.timeline-entry h3{
+  margin-bottom:8px;
+}
+
+.timeline-entry p{
+  font-size:15px;
+  color:var(--muted);
+}
+
+/* ---------- Result ---------- */
+.result{
+  margin-top:var(--space-3);
+}
+
+.result p{
+  font-size:16px;
+  line-height:1.65;
+}
+
+/* ---------- Paywall ---------- */
+.gamma-paywall .actions{
+  margin-top:var(--space-3);
+}
+
+/* ---------- Mobile polish ---------- */
 @media (max-width:430px){
-  body{padding:20px 12px}
-  .gamma-card{padding:18px}
+  #banner{
+    padding:var(--space-3) var(--space-2);
+  }
+
   h1{font-size:28px}
-  .gamma-cta, .btn{min-height:52px}
-}
 
-/* Timeline entry refinements for mobile-first clarity */
-.timeline-entry{padding:14px;border-radius:10px;background:rgba(255,255,255,0.96);border:1px solid rgba(15,15,15,0.04);box-shadow:0 6px 18px rgba(15,15,15,0.02);margin-bottom:14px}
-.timeline-entry h3{font-size:16px;margin:0 0 8px;color:var(--text);line-height:1.2}
-.timeline-entry p{font-size:15px;color:var(--muted);line-height:1.6;margin:0}
+  .button,
+  .gamma-cta{
+    width:100%;
+  }
 
-/* final italic sentence spacing (injected by script) */
-#timeline p[style*="italic"]{margin-top:12px;color:var(--muted);font-style:italic}
-
-@media (max-width:430px){
-  .timeline-entry{padding:12px;margin-bottom:12px}
-  .timeline-entry h3{font-size:15px}
-  .timeline-entry p{font-size:15px}
-}
-
-/* Paywall spacing: more respiro before the CTA, keep tone calm */
-.gamma-paywall .actions{margin-top:var(--space-3)}
-.gamma-paywall p{margin-bottom:var(--space-2)}
-
-/* Resultado (leitura completa) — calm reading + spacing */
-.result{margin-top:18px}
-.result h2{font-size:20px;margin:0 0 10px;line-height:1.12;color:var(--text)}
-.result p{font-size:16px;color:var(--muted);line-height:1.65;margin:0 0 14px}
-.muted-compact{font-size:14px;color:var(--muted)}
-
-/* make save/print action discrete */
-.gamma-savepdf{background:var(--beige);color:var(--text);box-shadow:none;border:0;padding:10px 14px;border-radius:10px}
-.gamma-savepdf:hover{filter:brightness(0.98)}
-
-@media (max-width:430px){
-  .result p{font-size:16px}
-}
-
-@media (min-width:641px){
-  .gamma-hero{padding:28px;min-height:48vh}
-  .gamma-hero .content{align-items:flex-start;text-align:left;padding-left:22px}
-  .cta-row{display:flex;gap:12px;margin-top:14px}
-}
-
-/* Print tweaks */
-@media print{ body{background:#fff} .card{box-shadow:none;border:0;background:#fff} .cta-row, .gamma-cta{display:none} }
-
-/* End of CSS */
-  .card{box-shadow:none;border:0;background:#fff}
-
-/* Layout Editorial Bridge */
-body {
-  font-size: 16px;
-}
-
-button,
-.button {
-  min-height: 52px;
-}
-
-@media (max-width: 430px) {
-  #banner {
-    padding: 3rem 1.5rem;
+  .btn-secondary{
+    display:none;
   }
 }
+
+/* ---------- Print ---------- */
+@media print{
+  body{background:#fff}
+  .button,.gamma-cta{display:none}
+}
+
+/* --- Editorial UX bridge (minimal, reversible overrides) --- */
+
+/* 1) Mobile hero / banner: reduce vertical padding and keep CTA above the fold */
+@media (max-width:430px){
+  #banner{padding:2rem 1rem;min-height:40vh;display:flex;align-items:center}
+  #banner .inner{padding:0}
+  .buttons.stacked{margin-top:12px}
+  /* ensure primary CTA has comfortable touch area */
+  .button.primary, .gamma-cta, .btn{min-height:52px;padding:0 18px}
+}
+
+/* 2) Reading / measure: limit line length and center content */
+.inner, .wrap, .gamma-card, article#main .inner, .measure{max-width:720px;margin-left:auto;margin-right:auto}
+body{font-size:16px}
+@media (min-width:641px){
+  .inner, .gamma-card{max-width:720px}
+}
+
+/* 3) CTA contrast and touch area (reinforce without changing markup) */
+.button.primary, .gamma-cta{background:var(--accent);color:#fff;border-radius:12px}
+.button.primary:focus, .gamma-cta:focus{outline:3px solid rgba(47,93,140,0.12);outline-offset:3px}
+
+/* 4) Timeline / mapa: spacing and hierarchy */
+.timeline-entry{margin-bottom:22px;padding:16px}
+.timeline-entry h3{font-size:17px;margin-bottom:8px}
+.timeline-entry p{font-size:15px;color:var(--muted)}
+
+/* 5) Ensure CTA doesn't compete with long text (comfortable breathing) */
+.cta-row, .actions{margin-top:20px}
+.gamma-note, .microcopy{margin-top:14px}
+
+/* Small layout safety: avoid template sidebars bleeding into main content */
+#page-wrapper{width:100%}
+
+/* end of Editorial UX bridge */
 
