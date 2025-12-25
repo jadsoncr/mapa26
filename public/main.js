@@ -112,22 +112,25 @@
     const prevYear = TARGET_YEAR - 1;
     const currYear = TARGET_YEAR;
     const nextYear = TARGET_YEAR + 1;
-    // helper to create a short teaser
-    function teaser(text){
-      if(!text) return '';
-      const cleaned = String(text).replace(/\s+/g,' ').trim();
-      // prefer first sentence if it exists
-      const firstSentenceEndIdx = cleaned.indexOf('. ');
-      if(firstSentenceEndIdx !== -1){
-        const firstSentence = cleaned.slice(0, firstSentenceEndIdx+1).trim();
-        if(firstSentence.length <= 140) return firstSentence;
-        // if first sentence too long, fall through to truncate rule below
+    // helper to create a short teaser (canonical implementation)
+    function teaser(text) {
+      const t = String(text || "").trim();
+      if (!t) return "";
+
+      // First sentence heuristic
+      const m = t.match(/^(.+?[.!?])(\s|$)/);
+      let out = (m ? m[1] : t);
+
+      out = out.replace(/\s+/g, " ").trim();
+
+      if (out.length > 140) {
+        out = out.slice(0, 140).trim();
+        // avoid ending with weak punctuation
+        out = out.replace(/[,:;\-–—]\s*$/g, "").trim();
       }
-      // truncate to 140 chars and ensure ends with a period (no ellipsis)
-      if(cleaned.length <= 140) return cleaned.endsWith('.') ? cleaned : cleaned + '.';
-      let slice = cleaned.slice(0,140).trim();
-      if(!slice.endsWith('.')) slice = slice.replace(/[\s,;:]+$/,'') + '.';
-      return slice;
+
+      if (!/[.!?]$/.test(out)) out += ".";
+      return out;
     }
 
     const paid = localStorage.getItem('mapa2026_paid') === 'true';
@@ -157,12 +160,7 @@
       const h = document.createElement('h3'); h.textContent = nr.number + ' • ' + nr.year + ' — ' + keyword; item.appendChild(h);
       const p = document.createElement('p'); p.textContent = contentText; p.style.color = '#6B6B6B'; item.appendChild(p);
 
-      if(!paid){
-        const unlock = document.createElement('div'); unlock.style.marginTop='10px';
-        const a = document.createElement('a'); a.href = 'convite.html'; a.className = 'button'; a.textContent = 'Desvendar 2026';
-        unlock.appendChild(a);
-        item.appendChild(unlock);
-      }
+      // no per-card unlock link when not paid; teaser + impact already shown above
 
       container.appendChild(item);
     });
