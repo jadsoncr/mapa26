@@ -1,243 +1,149 @@
-<<<<<<< HEAD
-/* Mapa 2026 — Editorial layout styles */
-=======
-/* Mapa 2026 — Editorial layout styles (public copy) */
->>>>>>> 04fd26b (feat(ui): editorial polish + mobile-first consistency)
+/* Mapa 2026 — Editorial layout styles (cleaned & mobile-first) */
+/* Mapa 2026 — Editorial layout styles (cleaned & mobile-first) */
+
 :root{
   --bg: #F6F4F1;
   --text: #1F1F1F;
   --muted: #6B6B6B;
   --accent: #2F5D8C;
-  --measure: 640px;
+  --amber: #C87E2A; /* calm error tone */
+  --measure: 720px;
+  --space-1:8px;
+  --space-2:16px;
+  --space-3:24px;
+  --space-4:32px;
+  --space-5:48px;
+  --beige: #DCC9A0; /* warm beige/gold */
 }
+
 *{box-sizing:border-box}
 html,body{height:100%}
+html{font-size:16px}
 body{
   background:var(--bg);
   color:var(--text);
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
-  margin:0; padding:48px 20px; display:flex; align-items:flex-start; justify-content:center;
+  margin:0; padding:28px 16px; display:flex; align-items:flex-start; justify-content:center;
+  line-height:1.6;
 }
 .wrap{width:100%;max-width:var(--measure);margin:0 auto}
-.container{background:transparent;padding:0;margin:0}
 
-/* Hero */
-.hero{display:flex;flex-direction:column;gap:18px;padding:20px 0 28px}
-.hero .visual{width:100%;height:140px;border-radius:12px;background:linear-gradient(180deg,rgba(47,93,140,0.04),rgba(242,239,234,0.03));display:block;overflow:hidden}
-.hero .visual .art{width:100%;height:100%;background-image:radial-gradient(circle at 10% 20%, rgba(47,93,140,0.03), transparent 14%), radial-gradient(circle at 90% 80%, rgba(47,93,140,0.02), transparent 18%);filter:blur(0.6px);opacity:0.98}
-.hero .title{font-family:"Cormorant Garamond", serif;font-size:36px;margin:8px 0 4px;font-weight:600}
-.hero .subtitle{font-size:16px;color:var(--muted);margin:0;line-height:1.6;max-width:42ch}
-.hero .privacy{font-size:0.78rem;color:var(--muted);opacity:0.72;margin-top:6px;text-align:center}
-.hero .cta-row{display:flex;flex-direction:column;gap:10px;margin-top:12px}
-
+/* Hero / gamma wrapper */
+.gamma-hero{width:100%;border-radius:12px;min-height:60vh;background-image: linear-gradient(rgba(255,255,255,0.36), rgba(255,255,255,0.12)), url('hero-bg.jpg'), url('/assets/gamma/hero-bg-placeholder.svg');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px}
+.gamma-page{min-height:100vh;padding:20px 12px;display:flex;align-items:flex-start;justify-content:center;background:transparent}
+.gamma-card{width:100%;max-width:760px;background:rgba(255,255,255,0.98);border-radius:14px;padding:22px;box-shadow:0 18px 40px rgba(15,15,15,0.04);border:1px solid rgba(15,15,15,0.04);box-sizing:border-box}
 
 /* Typography */
-h1,h2,h3{font-family:"Cormorant Garamond", "Cormorant", serif; color:var(--text); margin:0 0 18px; line-height:1.08}
-h1{font-size:38px;font-weight:600}
-h2{font-size:22px;font-weight:500;color:var(--text)}
-p{color:var(--muted);line-height:1.6;margin:0 0 18px;font-size:17px}
+h1,h2,h3{font-family:"Cormorant Garamond", serif; color:var(--text); margin:0 0 var(--space-2); line-height:1.12}
+h1{font-size:34px;font-weight:600}
+h2{font-size:20px;font-weight:500;color:var(--text)}
+p{color:var(--muted);margin:0 0 var(--space-2);font-size:16px;line-height:1.6}
+.small{font-size:14px}
 
-/* Buttons */
-.actions{margin-top:22px}
-.btn{display:inline-block;background:var(--accent);color:#fff;padding:12px 18px;border-radius:10px;border:0;font-weight:600;cursor:pointer;text-decoration:none}
+/* Utility spacing & measure */
+.measure{max-width:720px;margin:0 auto;padding:var(--space-2)}
+.spacious{padding-top:var(--space-3);padding-bottom:var(--space-3)}
+.subtitle{color:var(--muted);font-size:16px;line-height:1.65;margin-top:var(--space-1)}
+
+/* 'O que você recebe' list */
+.what-list{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px}
+.what-list li{position:relative;padding-left:20px;color:var(--text);font-size:15px}
+.what-list li::before{content:"";position:absolute;left:0;top:8px;width:10px;height:10px;border-radius:50%;background:var(--beige);box-shadow:inset 0 -1px 0 rgba(0,0,0,0.03)}
+
+/* whisper phrase under subtitle */
+.whisper{color:var(--muted);opacity:0.9;font-size:14px;margin-top:6px;font-style:italic}
+
+/* spacing tweaks to ensure breathing room above CTA */
+.what-you-get{margin-top:var(--space-2)}
+.cta-row{margin-top:var(--space-3)}
+
+/* Buttons — mobile-first premium styling */
+.gamma-cta, .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:0 18px;background:var(--accent);color:#fff;text-decoration:none;border:0;font-weight:600;border-radius:14px;min-height:52px;box-shadow:0 6px 18px rgba(47,93,140,0.08);transition:transform 120ms ease, box-shadow 120ms ease}
+.gamma-cta:focus-visible, .btn:focus-visible{outline:3px solid rgba(47,93,140,0.12);outline-offset:3px}
+.gamma-cta:hover, .btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(47,93,140,0.09)}
+.gamma-cta:active, .btn:active{transform:translateY(0);box-shadow:0 4px 12px rgba(47,93,140,0.06)}
 .btn[disabled]{opacity:0.6;cursor:default}
 
-/* Form micro-ritual */
-.form{background:transparent;margin-top:18px}
-.field{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
-label.small{color:var(--muted);font-size:14px}
-input[type="text"],input[type="date"]{padding:12px 14px;border-radius:10px;border:1px solid rgba(31,31,31,0.06);background:#fff;max-width:320px}
+/* Form */
+.form{background:transparent;margin-top:var(--space-2)}
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:var(--space-2)}
+label.small{color:var(--muted);font-size:13px}
+input[type="text"],input[type="date"]{padding:12px 14px;border-radius:10px;border:1px solid rgba(31,31,31,0.06);background:#fff;font-size:16px;min-width:160px}
 
-/* Progress */
 .progress{font-size:13px;color:var(--muted);margin-bottom:12px}
 
-/* Resultado editorial */
-.result{margin-top:18px;color:var(--text)}
-.result .lead{color:var(--muted);font-size:18px;margin-bottom:28px}
-.block{margin:28px 0;padding:0}
-.muted{color:var(--muted)}
+/* helper + error styles */
+.helper{color:var(--muted);font-size:13px;margin-top:6px}
+.error{color:var(--amber);font-size:13px;margin-top:6px;display:none}
 
-/* subtle divider */
-.divider{height:1px;background:rgba(31,31,31,0.04);margin:28px 0;border-radius:1px}
-
-/* footer microcopy */
-.microcopy{font-size:13px;color:var(--muted);margin-top:12px}
-
-/* accessibility */
-@media (max-width:640px){ body{padding:28px 16px} h1{font-size:32px} }
-@media (min-width:641px){
-  .hero{flex-direction:row;align-items:center;gap:24px}
-  .hero .visual{flex:0 0 220px;height:180px}
-  .hero .content{flex:1}
-  .hero .subtitle{max-width:52ch}
-}
-
-/* CTA tweaks specifically for hero to ensure comfortable touch target and accessible focus */
-.hero .cta-row .btn{height:46px;line-height:46px;padding:0 18px;border-radius:12px;font-weight:500;display:inline-flex;align-items:center;justify-content:center;box-shadow:none}
-.hero .cta-row .btn:hover{filter:brightness(0.98)}
-.hero .cta-row .btn:focus-visible{outline:3px solid rgba(47,93,140,0.12);outline-offset:3px}
-
-/* Preview page card & page layout (mobile-first) */
-.page{min-height:100vh;padding:40px 20px;display:flex;align-items:center;justify-content:center;background:transparent}
-.card{width:100%;max-width:760px;background:rgba(255,255,255,0.96);border-radius:16px;padding:28px;box-shadow:0 10px 30px rgba(15,15,15,0.04);border:1px solid rgba(15,15,15,0.04);box-sizing:border-box}
-
-.card h2,.card h3{font-family:"Cormorant Garamond", serif;font-weight:600;letter-spacing:0.2px;margin:0 0 10px}
-.card h2{font-size:20px}
-.card h3{font-size:18px;color:var(--text)}
-.card p{color:#111;line-height:1.6;margin:0 0 16px;max-width:64ch}
-.card .share-note{opacity:0.72;margin-top:8px}
-
-.card .year{font-family:"Cormorant Garamond", serif;font-size:56px;line-height:1;margin:0 0 6px;color:var(--text);letter-spacing:0.4px}
-.card .keyword{font-family:"Cormorant Garamond", serif;font-size:20px;margin:0 0 6px;color:var(--text)}
-.swatches{display:flex;gap:10px;margin-top:12px}
-.swatch{width:56px;height:36px;border-radius:8px;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.02)}
-
-.page .btn, .card .btn, a.btn{height:46px;border-radius:12px;font-weight:500;padding:0 16px;display:inline-flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none;background:var(--accent);color:#fff;border:0}
-.page .btn.secondary, .card .btn.secondary, a.btn.secondary{background:transparent;color:var(--text);border:1px solid rgba(31,31,31,0.06)}
-.page .btn:hover, .card .btn:hover, a.btn:hover{filter:brightness(0.98)}
-.page .btn:focus-visible, .card .btn:focus-visible, a.btn:focus-visible{outline:3px solid rgba(47,93,140,0.12);outline-offset:3px}
-
-.cta-row{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
-
-/* print tweaks for clean export */
-@media print{
-  body{background:#fff}
-  .page{padding:0}
-  .card{box-shadow:none;border:0;background:#fff}
-  .cta-row, .page .btn{display:none}
-}
-
-@media(min-width:760px){
-  .page{padding:56px 24px}
-  .card{padding:36px}
-  .card h2{font-size:22px}
-}
-
-/* --------------------------------------------------
-   Gamma overrides
-<<<<<<< HEAD
-   - Purpose: strict 1:1 visual override for Gamma PDF
-   - Do NOT change tokens above. This section only maps
-     Gamma classes and assets to the existing design system.
-   - TODOs mark missing assets/fonts that must be provided.
-=======
->>>>>>> 04fd26b (feat(ui): editorial polish + mobile-first consistency)
--------------------------------------------------- */
-
-/* Asset fallbacks: prefer original Gamma JPG/PNG, fallback to placeholder SVG */
-.gamma-hero{
-  width:100%;
-  border-radius:12px;
-  /* mobile-friendly hero height matching Gamma feel */
-  min-height:70vh;
-  /* subtle white overlay first for legibility, then the real hero image, then placeholder fallback */
-  background-image: linear-gradient(rgba(255,255,255,0.36), rgba(255,255,255,0.12)), url('hero-bg.jpg'), url('/assets/gamma/hero-bg-placeholder.svg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-<<<<<<< HEAD
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:28px 18px;
-=======
-  display:flex;align-items:center;justify-content:center;
->>>>>>> 04fd26b (feat(ui): editorial polish + mobile-first consistency)
-  overflow:hidden;
-}
-
-.gamma-page{min-height:100vh;padding:32px 18px;display:flex;align-items:flex-start;justify-content:center;background:transparent}
-.gamma-card{width:100%;max-width:760px;background:rgba(255,255,255,0.98);border-radius:14px;padding:26px;box-shadow:0 18px 40px rgba(15,15,15,0.04);border:1px solid rgba(15,15,15,0.04);box-sizing:border-box}
-
-.gamma-hero .gamma-title{font-family:"Cormorant Garamond", serif;font-size:38px;font-weight:600;margin:0 0 8px;line-height:1.05}
-<<<<<<< HEAD
-.gamma-hero .gamma-subtitle{font-size:15px;color:var(--muted);max-width:52ch;line-height:1.55;margin:0}
-=======
-.gamma-hero .gamma-subtitle{font-size:15px;color:var(--muted);max-width:42ch;line-height:1.6;margin:0}
->>>>>>> 04fd26b (feat(ui): editorial polish + mobile-first consistency)
-.gamma-note{font-size:0.78rem;color:var(--muted);opacity:0.78;margin-top:8px}
-
-.gamma-step{margin-top:20px}
-.gamma-step .label{font-size:13px;color:var(--muted);margin-bottom:8px}
-.gamma-step .field{display:flex;flex-direction:column;gap:8px}
-.gamma-step input[type="text"],.gamma-step input[type="date"]{padding:12px 14px;border-radius:10px;border:1px solid rgba(31,31,31,0.06);background:#fff}
-
-.gamma-card .gamma-year{font-family:"Cormorant Garamond", serif;font-size:58px;line-height:1;margin:6px 0;color:var(--text)}
-.gamma-card .gamma-keyword{font-family:"Cormorant Garamond", serif;font-size:20px;margin:0 0 8px;color:var(--text)}
-.gamma-illustration{width:160px;height:auto;background-image:url('/assets/gamma/symbolic-illustration.png'), url('/assets/gamma/symbolic-illustration-placeholder.svg');background-size:contain;background-repeat:no-repeat;background-position:center}
-
-.gamma-timeline{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:18px}
-.gamma-timeline .year-pill{padding:10px 12px;border-radius:10px;background:transparent;border:1px solid rgba(31,31,31,0.04);font-weight:600}
-
-.gamma-cta{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600}
-.gamma-cta.secondary{background:transparent;color:var(--text);border:1px solid rgba(31,31,31,0.06)}
-
-<<<<<<< HEAD
-/* Hero-specific content adjustments (mobile-first) */
-.gamma-hero .content{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8px 6px}
-.gamma-hero .title{margin:6px 0 8px}
-.gamma-hero .subtitle{max-width:52ch;line-height:1.55;margin:0 0 12px}
-.gamma-hero .cta-row{display:flex;flex-direction:column;gap:12px;margin-top:16px;align-items:center}
-.gamma-hero .cta-row .gamma-cta{min-height:44px;padding:12px 20px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center}
-.gamma-hero .gamma-note{opacity:0.66}
-
-=======
->>>>>>> 04fd26b (feat(ui): editorial polish + mobile-first consistency)
-/* Paywall block styling per Gamma */
-.gamma-paywall{display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(246,244,241,0.6), #fff);border:1px solid rgba(31,31,31,0.04)}
-.gamma-paywall .payment-note{font-size:14px;color:var(--muted)}
-
-/* PDF save button (Leitura completa) */
-.gamma-savepdf{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none}
-
-/* Print / export hide helpers to match Gamma print layout */
-@media print{
-  .gamma-cta, .gamma-savepdf, .gamma-paywall .gamma-cta{display:none}
-}
-
-<<<<<<< HEAD
-@media (min-width:641px){
-  .gamma-hero{flex-direction:row;padding:32px;min-height:48vh}
-  .gamma-hero .visual{flex:0 0 280px;height:340px;border-radius:12px}
-  .gamma-hero .content{align-items:flex-start;text-align:left;padding-left:22px}
-  .gamma-hero .cta-row{flex-direction:row;align-items:center}
-}
-
-/* TODO markers: fonts and exact assets (Gamma originals) */
-/* TODO: Add original Gamma font files and remove fallback system fonts */
-/* TODO: Replace /assets/gamma/*-placeholder.svg with original JPG/PNG exports from Gamma PDF */
-
-
-
-
-
-
-
-=======
-/* Utility classes added for editorial consistency */
-.measure{max-width:720px;margin:0 auto;padding:24px}
-@media(min-width:768px){.measure{padding:40px}}
-
-.spacious{padding-top:28px;padding-bottom:28px}
-@media(min-width:768px){.spacious{padding-top:40px;padding-bottom:40px}}
-
-.subtitle{color:var(--muted);font-size:16px;line-height:1.65;margin-top:10px}
-
-/* Ensure comfortable button sizing mobile-first */
-.btn{min-height:48px;padding:12px 16px;border-radius:10px;font-weight:600;border:1px solid rgba(0,0,0,0.06);display:inline-flex;align-items:center;justify-content:center;transition:all 120ms ease}
-.btn{width:100%}
-@media(min-width:768px){.btn{width:auto}}
-
-.btn-secondary{background:transparent;color:var(--text);border:1px solid rgba(31,31,31,0.06)}
-.btn-secondary:hover{background:rgba(0,0,0,0.03)}
-
-.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
-
-/* Focus-visible for keyboard users */
-a:focus-visible, button:focus-visible, .btn:focus-visible{outline:2px solid rgba(0,0,0,0.12);outline-offset:3px}
-
-/* Small helper for subtle calls */
+/* small preview card for desire */
+.mini-preview .card{background:#fff;border-radius:10px;border:1px solid rgba(15,15,15,0.04);box-shadow:0 6px 18px rgba(15,15,15,0.04);margin-top:var(--space-2)}
 .muted-compact{color:var(--muted);font-size:13px}
 
-/* End of public mapa2026.css additions */
->>>>>>> 04fd26b (feat(ui): editorial polish + mobile-first consistency)
+/* timeline / preview adjustments kept from original where needed */
+.card h2,.card h3{font-family:"Cormorant Garamond", serif;font-weight:600;letter-spacing:0.2px;margin:0 0 10px}
+.card p{color:#111;line-height:1.6;margin:0 0 12px}
+
+/* preview: impact and secondary CTA subtlety */
+.impact{font-size:16px;color:var(--text);line-height:1.6;margin-top:6px}
+.swatches{margin-top:12px}
+
+/* make secondary action visually quiet on mobile and subtle on desktop */
+.btn-secondary{background:transparent;color:var(--muted);border:0;padding:0 6px;min-height:0;height:auto;font-size:14px;box-shadow:none}
+@media (max-width:430px){
+  .btn-secondary{display:none}
+}
+
+/* Responsive rules: ensure comfortable view between 360–430px */
+@media (max-width:430px){
+  body{padding:20px 12px}
+  .gamma-card{padding:18px}
+  h1{font-size:28px}
+  .gamma-cta, .btn{min-height:52px}
+}
+
+/* Timeline entry refinements for mobile-first clarity */
+.timeline-entry{padding:14px;border-radius:10px;background:rgba(255,255,255,0.96);border:1px solid rgba(15,15,15,0.04);box-shadow:0 6px 18px rgba(15,15,15,0.02);margin-bottom:14px}
+.timeline-entry h3{font-size:16px;margin:0 0 8px;color:var(--text);line-height:1.2}
+.timeline-entry p{font-size:15px;color:var(--muted);line-height:1.6;margin:0}
+
+/* final italic sentence spacing (injected by script) */
+#timeline p[style*="italic"]{margin-top:12px;color:var(--muted);font-style:italic}
+
+@media (max-width:430px){
+  .timeline-entry{padding:12px;margin-bottom:12px}
+  .timeline-entry h3{font-size:15px}
+  .timeline-entry p{font-size:15px}
+}
+
+/* Paywall spacing: more respiro before the CTA, keep tone calm */
+.gamma-paywall .actions{margin-top:var(--space-3)}
+.gamma-paywall p{margin-bottom:var(--space-2)}
+
+/* Resultado (leitura completa) — calm reading + spacing */
+.result{margin-top:18px}
+.result h2{font-size:20px;margin:0 0 10px;line-height:1.12;color:var(--text)}
+.result p{font-size:16px;color:var(--muted);line-height:1.65;margin:0 0 14px}
+.muted-compact{font-size:14px;color:var(--muted)}
+
+/* make save/print action discrete */
+.gamma-savepdf{background:var(--beige);color:var(--text);box-shadow:none;border:0;padding:10px 14px;border-radius:10px}
+.gamma-savepdf:hover{filter:brightness(0.98)}
+
+@media (max-width:430px){
+  .result p{font-size:16px}
+}
+
+@media (min-width:641px){
+  .gamma-hero{padding:28px;min-height:48vh}
+  .gamma-hero .content{align-items:flex-start;text-align:left;padding-left:22px}
+  .cta-row{display:flex;gap:12px;margin-top:14px}
+}
+
+/* Print tweaks */
+@media print{ body{background:#fff} .card{box-shadow:none;border:0;background:#fff} .cta-row, .gamma-cta{display:none} }
+
+/* End of CSS */
+  .card{box-shadow:none;border:0;background:#fff}

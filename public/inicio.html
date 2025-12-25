@@ -4,12 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mapa 2026 — Micro‑ritual</title>
-<<<<<<< HEAD
-=======
   <link rel="stylesheet" href="mapa2026.css">
   <link rel="stylesheet" href="fonts.css">
->>>>>>> 04fd26b (feat(ui): editorial polish + mobile-first consistency)
-  <style>.error{color:#a33;font-size:13px;margin-top:6px}</style>
 </head>
 <body>
   <div class="wrap">
@@ -18,21 +14,32 @@
         <div class="progress">Etapa 1 de 2</div>
         <h2 id="micro-title">Um micro‑ritual rápido</h2>
         <p class="lead">Reserve um momento. Seus dados ficam apenas no navegador.</p>
+        <p class="whisper">Algumas respostas começam com um gesto simples.</p>
 
         <form id="f" class="form" autocomplete="off" novalidate>
           <div class="field">
             <label class="small" for="name">Seu nome</label>
             <input id="name" name="name" type="text" aria-label="Seu nome" placeholder="Ex.: Ana" required />
-            <div id="err-name" class="error" style="display:none">Por favor, informe seu nome.</div>
+            <div class="helper muted-compact">Como você prefere ser chamado?</div>
+            <div id="err-name" class="error" style="display:none">Preencha este campo para continuar.</div>
           </div>
 
           <div class="field">
             <label class="small" for="dob">Data de nascimento</label>
             <input id="dob" name="dob" type="date" aria-label="Data de nascimento" required />
-            <div id="err-dob" class="error" style="display:none">Informe uma data válida.</div>
+            <div class="helper muted-compact">Use sua data de nascimento.</div>
+            <div id="err-dob" class="error" style="display:none">Preencha este campo para continuar.</div>
           </div>
 
-          <p class="gamma-note note" style="color:#6B6B6B">Guardamos apenas localmente no seu navegador para que o mapa seja gerado.</p>
+          <p class="gamma-note note">Guardamos apenas localmente no seu navegador para que o mapa seja gerado.</p>
+
+          <div class="mini-preview spacious" aria-hidden="true">
+            <div class="card" style="padding:12px"> 
+              <h3 class="small">Exemplo do seu Mapa</h3>
+              <p class="muted-compact"><strong>Ano Pessoal:</strong> 1 — Início</p>
+              <p class="muted-compact">Frase: “Começo com foco.”</p>
+            </div>
+          </div>
 
           <div class="actions">
             <button id="btnContinue" class="gamma-cta btn" type="submit">Continuar</button>
@@ -43,6 +50,7 @@
     </main>
   </div>
 
+  <script src="data/mapa2026-data.js"></script>
   <script src="main.js" defer></script>
 </body>
 </html>
