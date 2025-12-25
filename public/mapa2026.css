@@ -147,3 +147,20 @@ input[type="text"],input[type="date"]{padding:12px 14px;border-radius:10px;borde
 
 /* End of CSS */
   .card{box-shadow:none;border:0;background:#fff}
+
+/* Layout Editorial Bridge */
+body {
+  font-size: 16px;
+}
+
+button,
+.button {
+  min-height: 52px;
+}
+
+@media (max-width: 430px) {
+  #banner {
+    padding: 3rem 1.5rem;
+  }
+}
+
