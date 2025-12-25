@@ -10,21 +10,23 @@
 </body>
   <main class="gamma-page">
     <section class="gamma-card gamma-paywall">
-      <h2>O Mapa completo aprofunda a energia do seu ano</h2>
-      <p>Leitura editorial para acompanhar o que 2026 traz — clareza, ritmo e presença. O texto é pensado para leitura e reflexão, sem promessas ou conselhos.</p>
-      <p class="muted">Contribuição única: <strong>R$ 19,90</strong></p>
+      <p class="whisper">Há profundidades que pedem mais tempo.</p>
+      <h2>Aprofunde a leitura do seu ano</h2>
+      <p>Você já viu o tom do seu número. A leitura completa aprofunda o contexto, os ciclos e os pontos de atenção para atravessar 2026 com mais clareza.</p>
+      <p class="muted">Acesso único por <strong>R$ 19,90</strong></p>
 
-      <form id="payForm" class="form" novalidate>
+      <div class="form" role="form" aria-labelledby="pay-instructions">
         <input type="hidden" id="numero" name="numero" />
         <label class="small">Nome</label>
-        <input id="name" name="name" required />
+        <input id="name" name="name" />
         <label class="small">Email (opcional)</label>
         <input id="email" name="email" />
-        <p class="microcopy" style="color:#6B6B6B">Pagamento seguro • acesso imediato • sem assinatura</p>
-        <div class="actions"><button id="payBtn" type="submit" class="gamma-cta btn">Acessar leitura completa</button></div>
+        <p class="microcopy" style="color:#6B6B6B">Pagamento seguro pelo Mercado Pago • acesso imediato • sem assinatura</p>
+        <div class="actions"><a id="payBtn" class="gamma-cta btn" href="https://mpago.li/1cKCGoP">Acessar minha leitura completa</a></div>
         <div id="payMessage" class="spacious" style="color:#6B6B6B;font-size:13px"></div>
-      </form>
+      </div>
 
+      <script src="data/mapa2026-data.js"></script>
       <script src="main.js" defer></script>
     </section>
   </main>

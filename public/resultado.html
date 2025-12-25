@@ -4,11 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mapa 2026 — Resultado</title>
-<<<<<<< HEAD
-=======
   <link rel="stylesheet" href="mapa2026.css">
   <link rel="stylesheet" href="fonts.css">
->>>>>>> 04fd26b (feat(ui): editorial polish + mobile-first consistency)
 </head>
 <body>
   <div class="wrap">
@@ -16,10 +13,13 @@
       <section class="gamma-card spacious">
         <h1 id="res-title">Seu mapa completo de 2026</h1>
         <p class="lead">Uma leitura calma e editorial — foco em 2026.</p>
+        <p class="whisper">Leia no seu ritmo. Volte quando quiser.</p>
 
         <div id="result" class="result" aria-live="polite">
           <p class="muted">Carregando a sua leitura…</p>
         </div>
+
+        <p class="muted-compact" style="margin-top:12px">Leia mais devagar: cada bloco foi pensado para reflexão.</p>
 
         <div>
           <button id="printBtn" class="gamma-savepdf btn">Salvar em PDF</button>
@@ -30,6 +30,7 @@
     </main>
   </div>
 
+  <script src="data/mapa2026-data.js"></script>
   <script src="main.js" defer></script>
 </body>
 </html>

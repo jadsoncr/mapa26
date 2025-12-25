@@ -7,18 +7,37 @@
 // - copy link and print functions
 
 (function(){
-  // map of keywords and short impacts (1-9)
-  const MAP = {
-    1:{keyword:'Início',impact:'Um ano de inaugurações e foco.'},
-    2:{keyword:'Relação',impact:'Assuntos de conexão marcam o ritmo.'},
-    3:{keyword:'Expressão',impact:'A criatividade encontra formas novas.'},
-    4:{keyword:'Fundação',impact:'Rotina e estrutura ganham espaço.'},
-    5:{keyword:'Movimento',impact:'Mudanças e adaptação em evidência.'},
-    6:{keyword:'Cuidado',impact:'Responsabilidades afetivas e práticas.'},
-    7:{keyword:'Interior',impact:'Um ano de recolhimento e profundidade.'},
-    8:{keyword:'Expansão',impact:'Assuntos de poder e maturidade.'},
-    9:{keyword:'Conclusão',impact:'Fechamentos simbólicos e liberação.'}
-  };
+  // Defensive check: ensure data file window.MAPA2026_DATA is present.
+  if (!window.MAPA2026_DATA) {
+    console.error("[MAPA2026] Dados ausentes: window.MAPA2026_DATA não carregou. Verifique a ordem do <script src='data/mapa2026-data.js'> antes do main.js.");
+    const isIndex = location.pathname === "/" || /index\.html$/.test(location.pathname);
+    if (!isIndex) location.href = "index.html";
+    return;
+  }
+
+  // Guard: map payment status handling and protected resultado access
+  const params = new URLSearchParams(window.location.search);
+
+  const status =
+    params.get("status") ||
+    params.get("collection_status");
+
+  if (status === "approved") {
+    localStorage.setItem("mapa2026_paid", "true");
+  }
+
+  if (window.location.pathname.includes("resultado.html")) {
+    const paid = localStorage.getItem("mapa2026_paid") === "true";
+
+    if (!paid) {
+      window.location.href = "convite.html";
+    }
+  }
+
+  // read data-driven content (source of truth)
+  const DATA = (window.MAPA2026_DATA || { targetYear:2026, numbers: {} });
+  const NUMBERS = DATA.numbers || {};
+  const TARGET_YEAR = DATA.targetYear || 2026;
 
   // helpers
   function getStored(){
@@ -40,7 +59,7 @@
     const parts = birthdate.split('-').map(Number);
     if(parts.length!==3) return null;
     const day = parts[2], month = parts[1];
-    const total = day + month + 2026;
+    const total = day + month + TARGET_YEAR;
     return digitalRoot(total);
   }
 
@@ -63,10 +82,10 @@
     const s = getStored();
     if(!s.birthdate){ window.location.href = 'inicio.html'; return; }
     const num = computePersonalYear(s.birthdate) || 1;
-    const entry = MAP[num] || MAP[9];
-    elYear.textContent = num + ' • 2026';
-    elKeyword.textContent = entry.keyword;
-    elImpact.textContent = entry.impact; // short, print-worthy
+    const entry = NUMBERS[num] || NUMBERS[9] || {};
+    elYear.textContent = num + ' • ' + TARGET_YEAR;
+    elKeyword.textContent = entry.keyword || '';
+    elImpact.textContent = entry.impact || ''; // short, print-worthy
     if(elSwatches){ elSwatches.innerHTML=''; ['#F2EFEA','#DCE7F0','#2F5D8C'].forEach(c=>{ const d = document.createElement('div'); d.className='swatch'; d.style.background = c; elSwatches.appendChild(d); }); }
 
     // wire copy link
@@ -85,18 +104,25 @@
     const s = getStored();
     if(!s.birthdate){ window.location.href='inicio.html'; return; }
     const num = computePersonalYear(s.birthdate) || 1;
-    const entry = MAP[num] || MAP[9];
+    // compute previous/current/next numbers with wrap 1..9
+    const current = num;
+    const prev = current - 1 >= 1 ? current - 1 : 9;
+    const next = current + 1 <= 9 ? current + 1 : 1;
+
+    const prevYear = TARGET_YEAR - 1;
+    const currYear = TARGET_YEAR;
+    const nextYear = TARGET_YEAR + 1;
 
     const rows = [
-      {year:2025, keyword:'Contexto', text:'O ano anterior aparece como pano de fundo, oferecendo pontos de referência.'},
-      {year:2026, keyword:entry.keyword, text:entry.impact},
-      {year:2027, keyword:'Perspectiva', text:'O ano seguinte surge como campo de possibilidade.'}
+      { number: prev, year: prevYear, keyword: (NUMBERS[prev] && NUMBERS[prev].keyword) || '', text: (NUMBERS[prev] && (NUMBERS[prev].timelineText || NUMBERS[prev].impact)) || '' },
+      { number: current, year: currYear, keyword: (NUMBERS[current] && NUMBERS[current].keyword) || '', text: (NUMBERS[current] && (NUMBERS[current].timelineText || NUMBERS[current].impact)) || '' },
+      { number: next, year: nextYear, keyword: (NUMBERS[next] && NUMBERS[next].keyword) || '', text: (NUMBERS[next] && (NUMBERS[next].timelineText || NUMBERS[next].impact)) || '' }
     ];
 
-    container.innerHTML='';
+    container.innerHTML = '';
     rows.forEach(r=>{
       const item = document.createElement('div'); item.className='timeline-entry';
-      const h = document.createElement('h3'); h.textContent = r.year + ' — ' + r.keyword; item.appendChild(h);
+      const h = document.createElement('h3'); h.textContent = r.number + ' • ' + r.year + ' — ' + r.keyword; item.appendChild(h);
       const p = document.createElement('p'); p.textContent = r.text; p.style.color = '#6B6B6B'; item.appendChild(p);
       container.appendChild(item);
     });
@@ -143,14 +169,13 @@
       return;
     }
     const num = computePersonalYear(s.birthdate) || 1;
-    const entry = MAP[num] || MAP[9];
+    const entry = NUMBERS[num] || NUMBERS[9] || {};
 
     container.innerHTML = '';
-    const h2 = document.createElement('h2'); h2.textContent = entry.keyword + ' — 2026'; container.appendChild(h2);
+    const h2 = document.createElement('h2'); h2.textContent = (entry.keyword || '') + ' — ' + TARGET_YEAR; container.appendChild(h2);
     const p0 = document.createElement('p'); p0.style.color = '#6B6B6B'; p0.textContent = 'Leitura para ' + (s.name || 'você') + ' — foco exclusivo em 2026.'; container.appendChild(p0);
-
-    const p1 = document.createElement('p'); p1.textContent = entry.impact; container.appendChild(p1);
-    const p2 = document.createElement('p'); p2.textContent = 'Contexto: 2025 traz referências; 2027 aparece como horizonte. A atenção aqui é para 2026.'; p2.style.color = '#6B6B6B'; container.appendChild(p2);
+    const p1 = document.createElement('p'); p1.textContent = entry.impact || ''; container.appendChild(p1);
+    const p2 = document.createElement('p'); p2.textContent = 'Contexto: ' + (TARGET_YEAR - 1) + ' traz referências; ' + (TARGET_YEAR + 1) + ' aparece como horizonte. A atenção aqui é para ' + TARGET_YEAR + '.'; p2.style.color = '#6B6B6B'; container.appendChild(p2);
   }
 
   // Print binding
@@ -169,13 +194,32 @@
     const errName = document.getElementById('err-name');
     const errDob = document.getElementById('err-dob');
     const btn = document.getElementById('btnContinue');
+    // do not show errors initially; show on blur or on submit
+    let touchedName = false;
+    let touchedDob = false;
+
+    function validateName(show){
+      const ok = nameInput.value && nameInput.value.trim().length>0;
+      if(show && !ok) errName.style.display='block'; else errName.style.display='none';
+      return ok;
+    }
+    function validateDob(show){
+      const ok = !!dobInput.value;
+      if(show && !ok) errDob.style.display='block'; else errDob.style.display='none';
+      return ok;
+    }
+
+    nameInput.addEventListener('blur', ()=>{ touchedName = true; validateName(true); });
+    dobInput.addEventListener('blur', ()=>{ touchedDob = true; validateDob(true); });
+
+    nameInput.addEventListener('input', ()=>{ if(touchedName) validateName(true); else errName.style.display='none'; });
+    dobInput.addEventListener('input', ()=>{ if(touchedDob) validateDob(true); else errDob.style.display='none'; });
 
     form.addEventListener('submit', e=>{
       e.preventDefault();
-      let ok = true;
-      if(!nameInput.value.trim()){ errName.style.display='block'; ok=false; } else errName.style.display='none';
-      if(!dobInput.value){ errDob.style.display='block'; ok=false; } else errDob.style.display='none';
-      if(!ok) return;
+      const okName = validateName(true);
+      const okDob = validateDob(true);
+      if(!okName || !okDob) return;
       // save and go to preview
       saveStored(nameInput.value.trim(), dobInput.value);
       btn.disabled = true; btn.textContent = 'Gerando…';
