@@ -23,60 +23,47 @@
       </div>
     </section>
 
-    <!-- Main: keep original form intact inside the editorial wrapper -->
-    <article id="main">
-      <div class="inner container">
-        <section class="wrapper style2 container special-alt">
-          <div class="row gtr-50">
-            <div class="col-8 col-12-narrower">
-              <div class="gamma-card gamma-step">
-                    <div class="progress">Etapa 1 de 2</div>
-                    <p class="lead">Reserve um momento. Seus dados ficam apenas no navegador.</p>
-                    <form id="f" class="form" autocomplete="off" novalidate>
-                  <div class="field">
-            <label class="small" for="name">Seu nome</label>
-            <input id="name" name="name" type="text" aria-label="Seu nome" placeholder="Ex.: Ana" required />
-            <div class="helper muted-compact">Como você prefere ser chamado?</div>
-            <div id="err-name" class="error" style="display:none">Preencha este campo para continuar.</div>
-          </div>
+    <!-- Main: standardized layout with form card + example card -->
+    <main class="page">
+      <div class="container">
+        <section class="section">
+          <div class="grid-2">
+            <div class="card">
+              <div class="progress">Etapa 1 de 2</div>
+              <p class="lead">Reserve um momento. Seus dados ficam apenas no navegador.</p>
+              <form id="f" class="form" autocomplete="off" novalidate>
+                <div class="field">
+                  <label class="small" for="name">Seu nome</label>
+                  <input id="name" name="name" type="text" aria-label="Seu nome" placeholder="Ex.: Ana" required />
+                  <div class="helper muted-compact">Como você prefere ser chamado?</div>
+                  <div id="err-name" class="error" style="display:none">Preencha este campo para continuar.</div>
+                </div>
 
-          <div class="field">
-            <label class="small" for="dob">Data de nascimento</label>
-            <input id="dob" name="dob" type="date" aria-label="Data de nascimento" required />
-            <div class="helper muted-compact">Use sua data de nascimento.</div>
-            <div id="err-dob" class="error" style="display:none">Preencha este campo para continuar.</div>
-          </div>
+                <div class="field">
+                  <label class="small" for="dob">Data de nascimento</label>
+                  <input id="dob" name="dob" type="date" aria-label="Data de nascimento" required />
+                  <div class="helper muted-compact">Use sua data de nascimento.</div>
+                  <div id="err-dob" class="error" style="display:none">Preencha este campo para continuar.</div>
+                </div>
 
-          <p class="gamma-note note">Guardamos apenas localmente no seu navegador para que o mapa seja gerado.</p>
+                <p class="gamma-note note">Guardamos apenas localmente no seu navegador para que o mapa seja gerado.</p>
 
-          <div class="mini-preview spacious" aria-hidden="true">
-            <div class="card" style="padding:12px"> 
+                <div class="actions">
+                  <button id="btnContinue" class="gamma-cta btn" type="submit">Continuar</button>
+                </div>
+                <p class="microcopy">Leitura gerada no seu navegador — sem envio de dados.</p>
+              </form>
+            </div>
+
+            <div class="card" aria-hidden="true">
               <h3 class="small">Exemplo do seu Mapa</h3>
               <p class="muted-compact"><strong>Ano Pessoal:</strong> 1 — Início</p>
               <p class="muted-compact">Frase: “Começo com foco.”</p>
             </div>
           </div>
-
-          <div class="actions">
-            <button id="btnContinue" class="gamma-cta btn" type="submit">Continuar</button>
-          </div>
-          <p class="microcopy">Leitura gerada no seu navegador — sem envio de dados.</p>
-        </form>
-              </div>
-            </div>
-            <div class="col-4 col-12-narrower imp-narrower">
-              <div class="mini-preview spacious" aria-hidden="true">
-                <div class="card" style="padding:12px"> 
-                  <h3 class="small">Exemplo do seu Mapa</h3>
-                  <p class="muted-compact"><strong>Ano Pessoal:</strong> 1 — Início</p>
-                  <p class="muted-compact">Frase: “Começo com foco.”</p>
-                </div>
-              </div>
-            </div>
-          </div>
         </section>
       </div>
-    </article>
+    </main>
 
     <!-- Footer (minimal) -->
     <footer id="footer">
