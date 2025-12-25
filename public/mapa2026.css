@@ -101,9 +101,17 @@ p{
   text-shadow: var(--shadow-dark);
 }
 
-#banner .subtitle, #banner .whisper, .gamma-paywall .subtitle, .gamma-paywall .whisper{
+/* Dark-area subtitles: slightly reduced opacity but above 0.68 for iPhone
+   Use on-dark tokens to ensure contrast. */
+#banner .subtitle, .gamma-paywall .subtitle{
   color:var(--on-dark-2);
-  opacity:0.92; /* ensure minimum readability on iPhone */
+  opacity:0.84; /* between 0.82 and 0.86 */
+}
+
+/* Whisper / small notes on dark backgrounds: lower emphasis but readable */
+#banner .whisper, .gamma-paywall .whisper{
+  color:var(--on-dark-3);
+  opacity:0.72; /* between 0.68 and 0.74 */
 }
 
 /* dividers and subtle lines on dark areas */

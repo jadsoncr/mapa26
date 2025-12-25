@@ -116,9 +116,18 @@
     function teaser(text){
       if(!text) return '';
       const cleaned = String(text).replace(/\s+/g,' ').trim();
-      const firstSentenceEnd = cleaned.indexOf('. ');
-      if(firstSentenceEnd !== -1 && firstSentenceEnd < 120) return cleaned.slice(0, firstSentenceEnd+1);
-      return cleaned.length > 120 ? cleaned.slice(0,120).trim() + '…' : cleaned;
+      // prefer first sentence if it exists
+      const firstSentenceEndIdx = cleaned.indexOf('. ');
+      if(firstSentenceEndIdx !== -1){
+        const firstSentence = cleaned.slice(0, firstSentenceEndIdx+1).trim();
+        if(firstSentence.length <= 140) return firstSentence;
+        // if first sentence too long, fall through to truncate rule below
+      }
+      // truncate to 140 chars and ensure ends with a period (no ellipsis)
+      if(cleaned.length <= 140) return cleaned.endsWith('.') ? cleaned : cleaned + '.';
+      let slice = cleaned.slice(0,140).trim();
+      if(!slice.endsWith('.')) slice = slice.replace(/[\s,;:]+$/,'') + '.';
+      return slice;
     }
 
     const paid = localStorage.getItem('mapa2026_paid') === 'true';
