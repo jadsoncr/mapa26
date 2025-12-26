@@ -27,7 +27,19 @@
         <section class="section">
           <div class="gamma-card spacious">
             <section id="timeline" class="gamma-timeline timeline" aria-live="polite" aria-busy="true">
-              <p class="visually-hidden">Carregando a linha do tempo…</p>
+              <!-- skeleton: three timeline cards shown until JS renders -->
+              <div class="timeline-entry" aria-hidden="true">
+                <h3 class="skeleton-title">—</h3>
+                <p class="skeleton-line">&nbsp;</p>
+              </div>
+              <div class="timeline-entry" aria-hidden="true">
+                <h3 class="skeleton-title">—</h3>
+                <p class="skeleton-line">&nbsp;</p>
+              </div>
+              <div class="timeline-entry" aria-hidden="true">
+                <h3 class="skeleton-title">—</h3>
+                <p class="skeleton-line">&nbsp;</p>
+              </div>
             </section>
 
             <p class="gamma-note share-note" style="color:#6B6B6B;font-size:13px">Leitura parcial · mapa26.vercel.app</p>

@@ -27,7 +27,19 @@
         <section class="section">
           <div class="gamma-card spacious card">
             <div id="result" class="result" aria-live="polite">
-              <p class="muted">Carregando a sua leitura…</p>
+              <!-- skeleton editorial: three blocks until JS renders full reading -->
+              <div class="card" aria-hidden="true" style="margin-bottom:12px;padding:18px"> 
+                <h3 class="skeleton-title">—</h3>
+                <p class="skeleton-line">&nbsp;</p>
+              </div>
+              <div class="card" aria-hidden="true" style="margin-bottom:12px;padding:18px"> 
+                <h3 class="skeleton-title">—</h3>
+                <p class="skeleton-line">&nbsp;</p>
+              </div>
+              <div class="card" aria-hidden="true" style="margin-bottom:12px;padding:18px"> 
+                <h3 class="skeleton-title">—</h3>
+                <p class="skeleton-line">&nbsp;</p>
+              </div>
             </div>
 
             <p class="muted-compact" style="margin-top:12px">Leia mais devagar: cada bloco foi pensado para reflexão.</p>
@@ -39,7 +51,7 @@
 
             <div style="display:flex;gap:12px;align-items:center">
               <button id="saveBtn" class="gamma-savepdf btn" onclick="window.print();">Salvar</button>
-              <button id="printBtn" class="gamma-savepdf btn">Imprimir</button>
+              <button id="printBtn" class="gamma-savepdf btn" onclick="window.print();">Imprimir</button>
               <button class="btn btn-secondary" onclick="(function(b){navigator.clipboard&&navigator.clipboard.writeText(location.href);b.textContent='Link copiado';setTimeout(()=>b.textContent='Copiar link',1200)})(this)">Copiar link</button>
             </div>
 

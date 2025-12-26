@@ -41,6 +41,28 @@
       </div>
     </main>
 
+    <script>
+      (function(){
+        var birth = localStorage.getItem('mapa2026_birthdate');
+        var card = document.querySelector('.gamma-card.spacious[aria-live]');
+        if(!card) return;
+        if(!birth){
+          card.innerHTML = '<h3>Inicie seu mapa</h3><p>Para gerar sua leitura, inicie o micro-ritual.</p><p><a class="button primary" href="inicio.html">Criar meu mapa</a></p>';
+          return;
+        }
+        // ensure ids exist for main.js to populate
+        card.innerHTML = '<div id="year">—</div><h3 id="keyword">—</h3><p id="impact">—</p>\n' +
+                         '<div class="cta-row">\n' +
+                         '<a id="toTimeline" class="gamma-cta btn" href="mapa.html">Ver a linha do tempo</a>\n' +
+                         '<button id="copyLinkPreview" class="btn btn-secondary">Copiar link</button>\n' +
+                         '</div>\n' +
+                         '<p class="microcopy">Leitura parcial · mapa26.vercel.app</p>';
+        // wire copy button
+        var btn = card.querySelector('#copyLinkPreview');
+        if(btn) btn.addEventListener('click', function(){ navigator.clipboard && navigator.clipboard.writeText(location.href); btn.textContent='Link copiado'; setTimeout(()=>btn.textContent='Copiar link',1200); });
+      })();
+    </script>
+
     <footer id="footer">
       <ul class="copyright"><li>&copy; Mapa 2026</li></ul>
     </footer>
