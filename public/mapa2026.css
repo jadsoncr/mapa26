@@ -397,3 +397,17 @@ body{font-size:16px}
 
 /* end soulful hero */
 
+/* Mobile centering and contrast improvements */
+@media (max-width:767px){
+  .hero-soulful{ padding:1.75rem 1rem }
+  .hero-soulful .inner{ display:flex; flex-direction:column; align-items:center; text-align:center }
+  .hero-soulful .content{ max-width:94%; }
+  .hero-soulful .hero-cta{ align-items:center }
+  .hero-soulful .microflow{ justify-content:center }
+  /* slightly increase contrast for lead text */
+  .hero-soulful .lead{ color:rgba(255,241,220,0.95) }
+}
+
+/* Map thumbnail placeholder styling */
+.map-thumb{ background-size:cover; background-position:center; border:1px solid rgba(0,0,0,0.06) }
+
