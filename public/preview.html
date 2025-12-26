@@ -15,8 +15,8 @@
     <section id="banner">
       <div class="inner">
         <header>
-          <h1>Revelação gratuita</h1>
-          <p class="subtitle">Uma prévia breve antes da leitura completa.</p>
+          <h1>Sinal inicial</h1>
+          <p class="subtitle">Método e personalização do seu mapa.</p>
           <p class="whisper">Todo ano tem um tom. Nem sempre ele grita.</p>
         </header>
       </div>
@@ -25,21 +25,17 @@
     <main class="page">
       <div class="container">
         <section class="section">
-          <div class="gamma-card spacious" id="essential" aria-live="polite">
-            <div class="gamma-year year" id="year">—</div>
-            <h3 class="gamma-keyword keyword" id="keyword">—</h3>
-            <p class="impact" id="impact">—</p>
+          <div class="gamma-card spacious" aria-live="polite">
+              <div id="year">—</div>
+              <h3 id="keyword">—</h3>
+              <p id="impact">—</p>
 
-            <div class="swatches" id="swatches" aria-hidden="true"></div>
+              <div class="cta-row">
+                <a id="toTimeline" class="gamma-cta btn" href="mapa.html">Ver a linha do tempo</a>
+                <button id="copyLinkPreview" class="btn btn-secondary" onclick="(function(b){navigator.clipboard&&navigator.clipboard.writeText(location.href);b.textContent='Link copiado';setTimeout(()=>b.textContent='Copiar link',1200)})(this)">Copiar link</button>
+              </div>
 
-            <p class="gamma-note share-note">Muita gente salva ou compartilha essa parte.</p>
-
-            <div class="cta-row">
-              <a id="toTimeline" class="gamma-cta btn" href="mapa.html">Ver a linha do tempo</a>
-              <button id="copyLink" class="btn btn-secondary">Copiar link</button>
-            </div>
-
-            <p class="microcopy">Leitura gerada no seu navegador — sem envio de dados.</p>
+              <p class="microcopy">Leitura parcial · mapa26.vercel.app</p>
           </div>
         </section>
       </div>
