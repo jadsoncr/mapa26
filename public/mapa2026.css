@@ -313,3 +313,37 @@ body{font-size:16px}
 
 /* end */
 
+/* ---------- CTA & Hero polish (unify appearance + mobile sticky) ---------- */
+/* unify primary CTA appearance across legacy classes */
+.button.primary, .gamma-cta, a.gamma-cta, .btn.gamma-cta {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:56px;
+  padding:0 20px;
+  border-radius:14px;
+  background:var(--accent);
+  color:#fff;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 8px 22px rgba(47,93,140,.10);
+}
+.button.primary:hover, .gamma-cta:hover{ transform:translateY(-2px); transition:transform .12s ease; }
+.button.primary:focus, .gamma-cta:focus{ outline:3px solid rgba(47,93,140,.12); outline-offset:3px; }
+
+/* hero year prominence */
+#banner h1{ font-size:44px; font-weight:700; margin:0 0 8px; }
+.hero-year{ font-size:1.15em; font-weight:800; margin-right:.28em; }
+
+.hero-cta{ margin-top:18px; display:flex; flex-direction:column; gap:8px; align-items:flex-start; }
+.hero-trust{ font-size:13px; color:var(--muted); opacity:.94 }
+
+/* sticky CTA for mobile */
+@media (max-width:480px){
+  .site-sticky-cta{ position:fixed; left:0; right:0; bottom:12px; display:flex; justify-content:center; z-index:1200; }
+  .site-sticky-cta .button.primary{ width:calc(100% - 40px); max-width:720px; }
+  #banner h1{ font-size:34px }
+}
+
+/* end CTA & Hero polish */
+
