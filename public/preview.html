@@ -15,8 +15,8 @@
     <section id="banner">
       <div class="inner">
         <header>
-          <h1>Revelação gratuita</h1>
-          <p class="subtitle">Uma prévia breve antes da leitura completa.</p>
+          <h1>Sinal inicial</h1>
+          <p class="subtitle">Método e personalização do seu mapa.</p>
           <p class="whisper">Todo ano tem um tom. Nem sempre ele grita.</p>
         </header>
       </div>
@@ -26,26 +26,16 @@
       <div class="container">
         <section class="section">
           <div class="gamma-card spacious" aria-live="polite">
-            <!-- keep hidden year element so main.js can validate flow -->
-            <div id="year" class="visually-hidden">—</div>
+              <div id="year">—</div>
+              <h3 id="keyword">—</h3>
+              <p id="impact">—</p>
 
-            <h2>2026 é regido pelo Número 2.</h2>
+              <div class="cta-row">
+                <a id="toTimeline" class="gamma-cta btn" href="mapa.html">Ver a linha do tempo</a>
+                <button id="copyLinkPreview" class="btn btn-secondary" onclick="(function(b){navigator.clipboard&&navigator.clipboard.writeText(location.href);b.textContent='Link copiado';setTimeout(()=>b.textContent='Copiar link',1200)})(this)">Copiar link</button>
+              </div>
 
-            <p>
-              Este número atua sobre:
-              • relações
-              • decisões compartilhadas
-              • sensibilidade ao ambiente
-            </p>
-
-            <p>A leitura completa mostra como esse eixo se manifesta ao longo do ano.</p>
-
-            <div class="cta-row">
-              <a id="toTimeline" class="gamma-cta btn" href="mapa.html">Ver a linha do tempo</a>
-              <button id="copyLink" class="btn btn-secondary">Copiar link</button>
-            </div>
-
-            <p class="microcopy">Mapa 2026 · mapa26.vercel.app</p>
+              <p class="microcopy">Leitura parcial · mapa26.vercel.app</p>
           </div>
         </section>
       </div>

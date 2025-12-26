@@ -37,11 +37,13 @@
               <p>Use esta leitura como referência de trabalho e reflexão: leia em voz baixa, anote impressões e retorne ao texto quando precisar reorientar o foco do seu ano.</p>
             </section>
 
-            <div>
-              <button id="printBtn" class="gamma-savepdf btn">Salvar / Imprimir leitura</button>
+            <div style="display:flex;gap:12px;align-items:center">
+              <button id="saveBtn" class="gamma-savepdf btn" onclick="window.print();">Salvar</button>
+              <button id="printBtn" class="gamma-savepdf btn">Imprimir</button>
+              <button class="btn btn-secondary" onclick="(function(b){navigator.clipboard&&navigator.clipboard.writeText(location.href);b.textContent='Link copiado';setTimeout(()=>b.textContent='Copiar link',1200)})(this)">Copiar link</button>
             </div>
 
-            <p class="microcopy">Mapa 2026 • leitura do seu ano</p>
+            <p class="microcopy">Gerado localmente · mapa26.vercel.app</p>
           </div>
         </section>
       </div>
